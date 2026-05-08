@@ -35,6 +35,7 @@ ROOT = Path(__file__).parent.parent
 ENDB_PATH = ROOT / "enGB.json"
 ORIG_PATH = ROOT / "arquivo-original-1.5.0.320.json"
 SRC_DIR = ROOT / "src" / "strings"
+GLOSSARIO_PATH = ROOT / "glossario.json"
 
 TAG_RE = re.compile(r"\{[^}]+\}|<[^>]+>")
 
@@ -105,7 +106,34 @@ def categorize(text: str) -> str:
     return "outros"
 
 
-def detect_status(en_text: str, pt_text: str) -> str:
+def _load_nao_traduzir() -> set:
+    """Carrega todos os termos que não devem ser traduzidos do glossário."""
+    nao_traduzir = set()
+    if not GLOSSARIO_PATH.exists():
+        return nao_traduzir
+    glossario = json.load(open(GLOSSARIO_PATH, encoding="utf-8"))
+    # Lista plana
+    for t in glossario.get("termos_nao_traduzir", []):
+        nao_traduzir.add(t.lower())
+    # Grupos estruturados
+    for key in ["termos_nao_traduzir_personagens", "termos_nao_traduzir_locais",
+                "termos_nao_traduzir_instituicoes", "termos_nao_traduzir_armas_e_equipamentos",
+                "termos_nao_traduzir_titulos"]:
+        group = glossario.get(key, {})
+        for v in group.values():
+            if isinstance(v, list):
+                nao_traduzir.update(t.lower() for t in v)
+    return nao_traduzir
+
+
+# Padrões de créditos/marcas que nunca são traduzidos
+CREDITOS_RE = re.compile(
+    r"\b(Inc|Ltd|Pty|Corp|LLC|GmbH|S\.A|Games|Software|Studios|Entertainment"
+    r"|Interactive|Technologies|Systems|Solutions|Group|Holdings)\b\.?", re.I
+)
+
+
+def detect_status(en_text: str, pt_text: str, nao_traduzir: set) -> str:
     """Detecta o status de tradução de uma string."""
     clean_en = strip_tags(en_text).strip()
     clean_pt = strip_tags(pt_text).strip()
@@ -114,19 +142,30 @@ def detect_status(en_text: str, pt_text: str) -> str:
     if len(clean_en) < 3:
         return "approved"
 
-    # Texto PT é idêntico ao EN → não traduzido
+    # Texto PT é idêntico ao EN → verificar se é nome próprio (não traduzir)
     if clean_en.lower() == clean_pt.lower():
+        # Nome próprio do glossário → correto, marcar como approved
+        if clean_en.lower() in nao_traduzir:
+            return "approved"
+        # Créditos/marcas → approved
+        if CREDITOS_RE.search(clean_en):
+            return "approved"
+        # String curta (≤ 3 palavras) com palavra do glossário → approved
+        words = clean_en.split()
+        if len(words) <= 3 and any(w.lower() in nao_traduzir for w in words):
+            return "approved"
+        # Genuinamente não traduzido
         return "pending"
 
     # Texto PT parece inglês → não traduzido
     if EN_RE.search(clean_pt) and not PT_RE.search(clean_pt):
         return "pending"
 
-    # Tem marcadores de português → traduzido (pode ser máquina ou humano)
+    # Tem marcadores de português → traduzido por máquina ou humano
     if PT_RE.search(clean_pt):
         return "machine"
 
-    # Difere do EN mas sem marcadores claros de português (nomes próprios, etc.)
+    # Difere do EN sem marcadores claros (nomes próprios, siglas, etc.)
     return "approved"
 
 
@@ -150,6 +189,10 @@ def run(dry_run: bool, stats_only: bool) -> int:
         orig_data = json.load(f)
     en_strings = orig_data["strings"]
 
+    # Carregar nomes próprios do glossário
+    print("Carregando glossário de nomes próprios...")
+    nao_traduzir = _load_nao_traduzir()
+
     # Categorizar e separar
     print("Categorizando strings...")
     categories: dict[str, dict] = {cat: {} for cat, _ in CATEGORIES}
@@ -161,7 +204,7 @@ def run(dry_run: bool, stats_only: bool) -> int:
         pt_text = pt_entry.get("Text", en_text)
 
         cat = categorize(en_text)
-        status = detect_status(en_text, pt_text)
+        status = detect_status(en_text, pt_text, nao_traduzir)
 
         categories[cat][uuid] = {
             "en": en_text,

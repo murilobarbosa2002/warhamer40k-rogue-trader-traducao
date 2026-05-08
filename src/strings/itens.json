@@ -277,7 +277,7 @@
   "e85336fe-470b-4795-b30b-001fee5fe7ec": {
     "en": "Digi-Weapon Flamer",
     "pt": "Digi-Weapon Flamer",
-    "status": "pending"
+    "status": "approved"
   },
   "71e1f8b5-18c0-4ac7-864e-d33a526b3765": {
     "en": "Flamer Shot: Stream",
@@ -412,7 +412,7 @@
   "c0c3b55f-80bf-43be-81ae-64a78af19ea2": {
     "en": "Astartes Bolter",
     "pt": "Astartes Bolter",
-    "status": "pending"
+    "status": "approved"
   },
   "42a85de1-27fe-4191-89ae-e157d3680542": {
     "en": "[Ryza-Pattern] Astartes Chainsword",
@@ -437,7 +437,7 @@
   "cf90f404-e566-4870-ba91-8a5fd3cee994": {
     "en": "Astartes Flamer",
     "pt": "Astartes Flamer",
-    "status": "pending"
+    "status": "approved"
   },
   "661cf0be-c2f7-488a-8542-77940e0e8f71": {
     "en": "Astartes Plasma Pistol",
@@ -472,7 +472,7 @@
   "fa023597-1d0e-4205-937e-89f9edf11860": {
     "en": "Bolter",
     "pt": "Bolter",
-    "status": "pending"
+    "status": "approved"
   },
   "b3c55783-a23a-4021-87ab-a22642c701b3": {
     "en": "[Ryza-Pattern] Chainsword",
@@ -527,7 +527,7 @@
   "75efdeea-cc0a-43df-8905-eae1960ca59f": {
     "en": "Flamer",
     "pt": "Flamer",
-    "status": "pending"
+    "status": "approved"
   },
   "84fcec34-3d5a-4418-92ff-ccf47be66fd3": {
     "en": "Heavy Bolter",
@@ -577,7 +577,7 @@
   "25925e25-66f4-4c7a-ae37-0c99ae0914f7": {
     "en": "Lasgun",
     "pt": "Lasgun",
-    "status": "pending"
+    "status": "approved"
   },
   "64614539-b1cd-47e0-a4fe-bb2f11958d74": {
     "en": "Melta Ultima",
@@ -1132,17 +1132,17 @@
   "eedf5c2b-b5a4-4b65-8117-2aedc1745d04": {
     "en": "Flamer",
     "pt": "Flamer",
-    "status": "pending"
+    "status": "approved"
   },
   "dc5b51f8-e14f-463c-8bb1-c7e53e310698": {
     "en": "Melta",
     "pt": "Melta",
-    "status": "pending"
+    "status": "approved"
   },
   "e79067c0-3171-4e3f-bb59-029dc9fc1b4d": {
     "en": "Plasma",
     "pt": "Plasma",
-    "status": "pending"
+    "status": "approved"
   },
   "17a07291-484c-45a4-ab90-5e3311ddb565": {
     "en": "The {g|Encyclopedia:FlagshipSpace}flagship{/g}'s {g|Encyclopedia:LanceWeaponSpace}lance weapon{/g} bay is possessed by a daemon.\nWhenever the flagship's lance hits an enemy ship's {g|Encyclopedia:HullIntegritySpace}hull{/g}, it has a 50% chance to start {g|Encyclopedia:InternalFiresSpace}internal fires{/g} on that ship. However, when no enemy ship is suffering from internal fires, the daemon's violent nature ignites internal fires on the flagship instead.",
@@ -1342,7 +1342,7 @@
   "5c0cff61-13eb-4478-9c4f-af1e934aa2b6": {
     "en": "Melta",
     "pt": "Melta",
-    "status": "pending"
+    "status": "approved"
   },
   "0dc726c2-6692-4688-8240-dfe55935efb8": {
     "en": "Ghost Lasgun",
@@ -1447,7 +1447,7 @@
   "67be997d-155a-4a73-ad9a-0b7da3238467": {
     "en": "Multi-Melta",
     "pt": "Multi-Melta",
-    "status": "pending"
+    "status": "approved"
   },
   "2bd6db28-c357-4d7b-a9e5-abd2e11b1fc1": {
     "en": "The largest type of melta weapon, usually only employed by the Adeptus Astartes or mounted upon Imperial vehicles.",
@@ -1797,7 +1797,7 @@
   "3ac55222-aa95-498e-ba2a-3c208fcc1a0d": {
     "en": "Flamer",
     "pt": "Flamer",
-    "status": "pending"
+    "status": "approved"
   },
   "bb82d499-5a5a-499b-8fe2-3ad9a97b8f98": {
     "en": "Plasma Cannon",
