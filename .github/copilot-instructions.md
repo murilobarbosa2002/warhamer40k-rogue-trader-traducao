@@ -40,7 +40,7 @@ python3 scripts/validate.py && python3 scripts/relatorio.py
 
 Warhammer 40K é um universo de ficção científica **grimdark** (sombrio e brutal). O tom é sério, formal, épico e às vezes litúrgico. Personagens nobres falam com altivez, militares falam com autoridade, cultistas e hereges com fanatismo. Evite tom casual ou moderno.
 
-O jogador interpreta um **Rogue Trader** (Comerciante Desonesto/Explorador Imperialista) — um nobre com Carta de Marca Imperial que tem autoridade quase absoluta nos espaços não conquistados. Trate o personagem jogador com pronomes masculinos por padrão, a menos que o contexto indique o contrário.
+O jogador interpreta um **Rogue Trader** (Comerciante Desonesto/Explorador Imperialista) — um nobre com Carta de Marca Imperial que tem autoridade quase absoluta nos espaços não conquistados. Use pronomes masculinos para o personagem jogador, exceto quando o próprio texto fonte usar explicitamente pronomes femininos (she/her) ou neutros para esse personagem.
 
 ## Estrutura do Arquivo
 
@@ -108,20 +108,33 @@ Consulte sempre `glossario.json` na raiz do projeto. Os termos abaixo são obrig
 
 `Rogue Trader`, `Astartes`, `Space Marine`, `Adeptus Mechanicus`, `Adepta Sororitas`, `Inquisition`, `Mechanicus`, `Omnissiah`, `Immaterium`, `Chaos` (quando nome próprio), `Eldar`, `Aeldari`, `Tau`, `Ork`, `Necron`, `Tyranid`, `Bolter`, `Boltgun`, `Lasgun`, `Laspistol`, `Longlas`, `Vox`, `Mechadendrite`, `Servo-skull`, `Throne` (quando "Golden Throne"), `Webway`, `Warp` (quando nome próprio), `Ferrum Sanctum`, `Omnissias`.
 
-## Princípios de Tradução
+## Regras de Tradução
 
-1. **Tom grimdark**: As falas devem soar épicas, sérias ou brutais. Evite "você pode" → prefira "podes" quando o personagem tem estatura. Mas mantenha consistência — o jogo usa "você" majoritariamente.
-2. **Sem traduções literais robóticas**: "certifique-se de que" → "garanta que". "você pode ser capaz de" → "pode ser possível" ou simplesmente reescreva.
-3. **Gênero dos substantivos**: A nave é feminina ("a nave"). O personagem é "o personagem". Verifique concordância.
-4. **Textos de interface (UI)**: Podem ser mais diretos e concisos. "Pick up item" → "Pegar item" (não "Por favor, pegue o item").
-5. **Textos de enciclopédia/habilidades**: Tom técnico-formal. Use terminologia do glossário.
-6. **Falas de personagens**: Preservar a voz e personalidade. Um Tech-Priest fala com jargão mecânico; um Soldado fala direto; um Noble fala com altivez.
+### 1. Formatação e Tags
 
-## O que NÃO fazer
+- **Preservar todas as tags** exatamente como estão: `{g|..}texto{/g}`, `{n}texto{/n}`, `{uip|..}`, `{unit_stat|..}`, `<b>`, `<i>`, `<br>`, `\n`
+- O identificador dentro de `{g|Encyclopedia:NomeDaCoisa}` **nunca é traduzido** — apenas o texto entre as tags
+- Não remover, reordenar ou modificar tags `{g|...}`, `{n}...{/n}`, `{uip|...}`
+- Não traduzir UUIDs, chaves ou identificadores
 
-- Não traduzir UUIDs, chaves, identificadores dentro de tags
-- Não remover ou reordenar tags `{g|...}`, `{n}...{/n}`, `{uip|...}`
-- Não usar "damage", "target", "range", "cooldown", "buff", "skill" em texto PT-BR
+### 2. Terminologia
+
+- Usar sempre o glossário canônico (seção acima): AP→PA, MP→PM, Cooldown→Recarga, etc.
+- Não usar termos em inglês em texto PT-BR: "damage", "target", "range", "cooldown", "buff", "skill"
 - Não misturar "MP" com "PM" ou "AP" com "PA" na mesma string
-- Não usar Google Translate literalmente sem revisão
-- Não traduzir nomes próprios listados acima
+- Não traduzir nomes próprios do universo WH40K listados na seção de glossário
+
+### 3. Tom e Estilo
+
+- **Tom grimdark**: falas épicas, sérias ou brutais — sem linguagem casual ou moderna
+- O jogo usa "você" majoritariamente; manter esse padrão salvo exceções de personagens com estatura formal
+- Evitar traduções literais robóticas: "certifique-se de que" → "garanta que"; "você pode ser capaz de" → reescrever livremente
+- Verificar concordância de gênero dos substantivos (ex: "a nave" é feminina)
+
+### 4. Tipos de Texto
+
+| Tipo | Orientação |
+|------|------------|
+| Interface (UI) | Direto e conciso. "Pick up item" → "Pegar item" |
+| Enciclopédia/Habilidades | Tom técnico-formal. Usar glossário estritamente |
+| Falas de personagens | Preservar voz e personalidade: Tech-Priest usa jargão mecânico; Soldado fala direto; Noble fala com altivez |

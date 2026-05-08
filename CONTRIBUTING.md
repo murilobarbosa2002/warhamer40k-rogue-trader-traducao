@@ -7,10 +7,10 @@ Bem-vindo! Este é um projeto colaborativo de tradução para o português brasi
 > Execute `python3 scripts/relatorio.py` para ver o estado mais recente.
 
 Problemas conhecidos que precisam de atenção:
-- **~57 strings ainda em inglês** (não traduzidas)
-- **~193 strings com tags HTML/game desbalanceadas** (herança da tradução automática original)
-- **~289 termos em inglês** no meio de texto PT (target, range, talent, cooldown...)
-- **~97 "MP"** onde deveria ser "PM" e **~60 "AP"** onde deveria ser "PA"
+- **~510 strings ainda em inglês** (não traduzidas)
+- **~193 strings com tags desbalanceadas** (herança da tradução automática original)
+- **Concordância de gênero** incorreta em ~112 strings (`o nave` → `a nave`)
+- **Tom muito literal/robótico** em partes da tradução automática original
 
 ---
 
@@ -18,11 +18,19 @@ Problemas conhecidos que precisam de atenção:
 
 - Git
 - Python 3.10+
-- VS Code com extensão GitHub Copilot (para usar os agentes)
+- VS Code com extensão GitHub Copilot (para usar os agentes, opcional)
 
 ```bash
 git clone https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao.git
 cd warhamer40k-rogue-trader-traducao
+
+# Criar ambiente virtual e instalar dependências
+python3 -m venv .venv
+source .venv/bin/activate
+pip install tqdm rich groq python-dotenv deep-translator
+
+# Copiar configuração de IA (opcional — só necessário para tradução automática)
+cp .env.example .env
 ```
 
 ---
@@ -76,9 +84,9 @@ Se você usa VS Code com Copilot, os agentes estão disponíveis via `@` no chat
 
 | Agente | Como usar |
 |--------|-----------|
-| `@tradutor` | Traduz strings individuais ou em lote com terminologia correta |
-| `@revisor` | Revisa qualidade, detecta erros de terminologia e gramática |
-| `@corretor` | Aplica correções automáticas seguras em massa |
+| **Tradutor WH40K** | Traduz strings individuais ou em lote com terminologia correta |
+| **Revisor de Qualidade** | Revisa qualidade, detecta erros de terminologia e gramática |
+| **Corretor Automático** | Aplica correções automáticas seguras em massa |
 
 **Prompts disponíveis** (digite `/` no chat Copilot):
 
@@ -129,10 +137,22 @@ Termos que **nunca** se traduzem: `Rogue Trader`, `Astartes`, `Space Marine`, `B
 ## Scripts disponíveis
 
 ```bash
-# Ver estado atual da tradução
-python3 scripts/relatorio.py
+# Ver quantas strings ainda precisam de tradução
+python3 scripts/diff_original.py --stats
 
-# Aplicar correções automáticas (simulação)
+# Traduzir strings faltando com IA (Ollama local, sem custo)
+python3 scripts/translate_batch.py
+
+# Traduzir apenas 50 strings para testar
+python3 scripts/translate_batch.py --limite 50
+
+# Usar Google Translate como alternativa (sem instalar nada extra)
+python3 scripts/translate_batch.py --provider deep_translator
+
+# Reconstruir enGB.json limpo (remove strings obsoletas)
+python3 scripts/build_from_original.py --dry-run
+
+# Aplicar correções automáticas de terminologia (simulação)
 python3 scripts/fix_auto.py --dry-run
 
 # Aplicar correções automáticas (de verdade)
@@ -140,7 +160,19 @@ python3 scripts/fix_auto.py
 
 # Validar integridade do JSON
 python3 scripts/validate.py
+
+# Ver relatório completo de qualidade
+python3 scripts/relatorio.py
 ```
+
+| Script | Descrição |
+|--------|----------|
+| `diff_original.py` | Compara EN original vs PT, gera fila de trabalho |
+| `translate_batch.py` | Traduz com IA — Ollama → Groq → Google, com checkpoint |
+| `build_from_original.py` | Reconstrói enGB.json limpo a partir do arquivo EN original |
+| `fix_auto.py` | Correções automáticas seguras (MP→PM, AP→PA, cooldown→recarga) |
+| `validate.py` | Valida estrutura JSON e balanço de tags `{g|..}{/g}` |
+| `relatorio.py` | Relatório completo: score, erros, estatísticas |
 
 ---
 
