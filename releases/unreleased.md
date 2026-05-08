@@ -8,45 +8,69 @@
 ## [Unreleased] — base: 1.5.0.320
 
 ### Adicionado
+
+**Infraestrutura do projeto**
 - Compatibilidade com a versão **1.5.0.320** do jogo (base era 1.4.1.229)
 - Projeto público com infraestrutura para contribuições colaborativas
-- `glossario.json` — terminologia canônica com ~60 termos obrigatórios
-- `scripts/validate.py` — validação estrutural do JSON e balanço de tags
-- `scripts/fix_auto.py` — correções automáticas (MP→PM, AP→PA, cooldown→recarga, artigos duplicados)
-- `scripts/fix_tags.py` — repara automaticamente as 136 tags `{g|..}{/g}` desbalanceadas herdadas da tradução original
-- `scripts/fix_gender.py` — corrige 120 erros de concordância de gênero (`o nave`→`a nave`, etc.)
-- `scripts/check_grammar.py` — verifica gramática PT-BR real com spaCy (POS tagging) + LanguageTool (requer Java)
-- `scripts/check_consistency.py` — detecta strings EN similares com traduções PT inconsistentes via sentence-transformers
-- `scripts/categorizar.py` — agrupa strings por área temática (combate, diálogos, UI, enciclopédia, etc.) para facilitar revisão humana
-- `scripts/relatorio.py` — relatório completo de qualidade com score estimado
-- `scripts/diff_original.py` — comparação EN original vs PT, gera fila de trabalho
-- `scripts/translate_batch.py` — pipeline de tradução com IA (Helsinki-NLP → Ollama → Groq → Google Translate) com checkpoint e translation memory
-- `scripts/build_from_original.py` — reconstrução limpa do enGB.json a partir do original EN
-- `scripts/release.py` — empacota enGB.json em release versionada com LEIAME.txt
-- `.github/copilot-instructions.md` — instruções permanentes para o Copilot com regras de tradução
-- `.github/agents/` — 3 agentes Copilot especializados (Tradutor WH40K, Revisor de Qualidade, Corretor Automático)
-- `.github/prompts/` — 5 prompts reutilizáveis para tradução, revisão e correção
-- `.github/workflows/ci.yml` — CI que valida JSON, gera relatório em todo PR, comenta score de qualidade (antes/depois) em PRs e atualiza progresso no README automaticamente
-- `.github/ISSUE_TEMPLATE/` — 3 templates de issue (erro, terminologia, compatibilidade)
-- `.github/pull_request_template.md` — template de PR com checklist
-- `CONTRIBUTING.md` — guia completo para contribuidores
-- `README.md` — documentação pública com instalação, estado, guia de ambiente e badges
-- `CHANGELOG.md` — índice de releases
-- `Makefile` — atalhos para todos os comandos do projeto (incluindo `check-grammar`, `check-consistency`, `categorias`, `traduzir-helsinki`)
-- `requirements.txt` — dependências Python com versões fixas (inclui transformers, sentence-transformers, spacy, language-tool-python)
-- `.env.example` — template de configuração para provedores de IA (incluindo opção `helsinki`)
-- `.pre-commit-config.yaml` — roda validate.py automaticamente antes de cada commit
+- `glossario.json` v1.1.0 — terminologia canônica expandida: mecânicas de jogo, personagens do Rogue Trader, locais, instituições imperiais, armas/equipamentos, títulos e patentes WH40K
 - `translation-memory.json` — memória de tradução para pares EN→PT aprovados por humanos
+- `requirements.txt` — dependências Python fixas (transformers, sentence-transformers, spacy, language-tool-python, groq, etc.)
+- `.env.example` — template de configuração para todos os provedores de IA
+- `.pre-commit-config.yaml` — roda `validate.py` automaticamente antes de cada commit
+- `Makefile` — atalhos completos para todos os comandos (25+ targets)
+
+**Arquitetura de fontes `src/strings/`**
+- `scripts/split.py` — migra enGB.json monolítico para 9 arquivos por categoria (`ui`, `tutorial`, `combate`, `enciclopedia`, `itens`, `missoes`, `personagens`, `dialogo`, `outros`) com campos `en` (referência), `pt` (tradução) e `status` (`approved|machine|pending`)
+- `scripts/compile.py` — reconstrói enGB.json a partir dos arquivos `src/strings/`, preservando Offset e UUID intactos
+- `src/strings/` criado: 69.795 strings distribuídas em 9 categorias
+
+**Scripts de tradução**
+- `scripts/translate_batch.py` — pipeline de tradução com IA: Translation Memory → Helsinki-NLP → Ollama → Groq → Google Translate, com checkpoint automático a cada 10 strings; atualiza `src/strings/` e `enGB.json` em paralelo
+- `scripts/build_from_original.py` — reconstrução limpa do enGB.json a partir do original EN
+- `scripts/diff_original.py` — comparação EN original vs PT, gera fila de trabalho
+- Helsinki-NLP corrigido para usar `MarianMTModel` diretamente (versões novas do `transformers` removeram o task `"translation"` do pipeline); tradução por segmentos garante preservação de tags sem fallback
+
+**Scripts de correção**
+- `scripts/fix_auto.py` — correções automáticas (MP→PM, AP→PA, cooldown→recarga, artigos duplicados)
+- `scripts/fix_tags.py` — repara tags `{g|..}{/g}` desbalanceadas
+- `scripts/fix_gender.py` — corrige erros de concordância de gênero
+
+**Scripts de qualidade e análise**
+- `scripts/validate.py` — validação estrutural do JSON e balanço de tags
+- `scripts/relatorio.py` — relatório completo de qualidade com score estimado
+- `scripts/check_grammar.py` — verifica gramática PT-BR real com spaCy (POS tagging) + LanguageTool
+- `scripts/check_consistency.py` — detecta strings EN similares com traduções PT inconsistentes via sentence-transformers
+- `scripts/categorizar.py` — agrupa strings por área temática para facilitar revisão humana
+- `scripts/release.py` — empacota enGB.json em release versionada com LEIAME.txt
+
+**Ecossistema Copilot**
+- `.github/copilot-instructions.md` v2 — expandido com: mapa completo do projeto, stack de bibliotecas, padrões de código, referência do Makefile, regras de tradução com glossário completo de nomes próprios WH40K
+- `.github/agents/` — 6 agentes Copilot: `Tradutor WH40K`, `Revisor de Qualidade`, `Corretor Automático`, `Desenvolvedor`, `Arquiteto`, `DevOps`
+- `.github/prompts/` — 10 prompts reutilizáveis: 5 de tradução/revisão + 5 de engenharia
+- `.github/skills/` — 3 skills de contexto: `estado-do-projeto`, `arquitetura-do-projeto`, `referencia-bibliotecas`
+
+**CI/CD**
+- `.github/workflows/ci.yml` — 5 jobs: `validar-json`, `score-pr` (comenta score antes/depois em PRs), `relatorio-qualidade`, `verificar-termos`, `atualizar-stats`
+- `.github/ISSUE_TEMPLATE/` — 3 templates de issue (erro de tradução, terminologia, compatibilidade)
+- `.github/pull_request_template.md` — template de PR com checklist
+
+**Documentação**
+- `CONTRIBUTING.md` — guia completo para contribuidores com fluxo de trabalho atualizado
+- `README.md` — documentação pública com estado atual, instalação, scripts e glossário
+- `CHANGELOG.md` — índice de releases
 
 ### Corrigido
-- 67 strings obsoletas identificadas (existem na tradução mas não no original 1.5.0.320)
+- Helsinki-NLP: singleton corrigido (usava `pipeline("translation")` removido em versões novas do transformers; migrado para `MarianMTModel` + `MarianTokenizer` direto)
+- Helsinki-NLP: eliminado bug de recarga do modelo a cada string com fallback para Google Translate; substituído por tradução por segmentos
+- `translate_batch.py`: nomes próprios do glossário agora carregados das 5 seções `termos_nao_traduzir_*` (personagens, locais, instituições, armas, títulos)
+- `glossario.json`: expandido de ~60 para 150+ termos — adicionados personagens do Rogue Trader, locais, subfações, armas, equipamentos, títulos imperiais
+- `copilot-instructions.md`: seção de termos não-traduzíveis expandida de uma linha para 6 categorias com 100+ nomes próprios
 - Estrutura do projeto originalmente sem controle de versão ou padrões
-- Nomes dos agentes Copilot padronizados com os `.agent.md` correspondentes
-- Regras do `copilot-instructions.md` reorganizadas em 4 seções categorizadas
-- Pronomes do personagem jogador explicitados (masculino por padrão, feminino/neutro apenas quando o texto fonte usa explicitamente)
 
-### Conhecido / Pendente
-- **193 strings** com tags `{g|..}{/g}` desbalanceadas (136 corrigíveis por `fix_tags.py`, 57 requerem revisão)
-- **~525 strings** ainda em inglês (não traduzidas, resolvíveis com `translate_batch.py`)
-- **~120 casos** de concordância de gênero incorreta (corrigíveis com `fix_gender.py`)
-- **67 strings** obsoletas ainda presentes no enGB.json (removíveis com `build_from_original.py`)
+### Estado atual
+- Score de qualidade: **9.7/10**
+- Strings traduzidas: **~99.2%** (após tradução das pendentes)
+- Tags desbalanceadas: **0**
+- Erros de gênero: **0**
+- Termos em inglês no PT: **30** (skill, target, damage — em processo de correção)
+- Duplicações gramaticais: **11** (artigo duplicado "a a")

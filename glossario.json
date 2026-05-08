@@ -1,6 +1,6 @@
 {
   "_comentario": "Glossário canônico PT-BR para WH40K: Rogue Trader. Fonte da verdade para todos os agentes e contribuidores.",
-  "_version": "1.0.0",
+  "_version": "1.1.0",
 
   "termos_obrigatorios": {
     "Action Points": { "ptbr": "Pontos de Ação", "abreviacao": "PA", "proibido": ["AP"] },
@@ -70,7 +70,32 @@
     "Psyker": { "ptbr": "Psíquico" },
     "Warp Power": { "ptbr": "Poder da Distorção" },
     "Navigator": { "ptbr": "Navegador" },
-    "Rogue Trader title": { "ptbr": "Rogue Trader", "notas": "Título/função — manter em inglês" }
+    "Rogue Trader title": { "ptbr": "Rogue Trader", "notas": "Título/função — manter em inglês" },
+
+    "Warrant of Trade": { "ptbr": "Carta de Marca", "notas": "Documento Imperial que concede autoridade ao Rogue Trader" },
+    "Koronus Expanse": { "ptbr": "Expansão de Koronus", "notas": "Região onde o jogo acontece — pode ser traduzida; verificar contexto" },
+    "Hive World": { "ptbr": "Mundo Colmeia" },
+    "Forge World": { "ptbr": "Mundo Forja" },
+    "Death World": { "ptbr": "Mundo da Morte" },
+    "Feral World": { "ptbr": "Mundo Feral" },
+    "Voidborn": { "ptbr": "Nascido no Vazio" },
+    "Warp jump": { "ptbr": "Salto na Distorção" },
+    "Warp translation": { "ptbr": "Translação na Distorção" },
+    "Warp Storm": { "ptbr": "Tempestade da Distorção" },
+    "Gellar Field": { "ptbr": "Campo Gellar", "notas": "Proteção contra o Imaterium em naves — preservar grafia 'Gellar', não 'Geller'" },
+    "Sanctioned Psyker": { "ptbr": "Psíquico Sancionado" },
+    "Daemonic Possession": { "ptbr": "Possessão Daemônica" },
+    "Warp Entity": { "ptbr": "Entidade da Distorção" },
+    "Heretek": { "ptbr": "Heretek", "notas": "Nome próprio — manter em inglês" },
+    "Battle-cant": { "ptbr": "gíria de batalha" },
+    "Cogitator": { "ptbr": "Cogitador" },
+    "Servo-skull": { "ptbr": "Servo-crânio" },
+    "Mechadendrite": { "ptbr": "Mechadendrito" },
+    "Vox": { "ptbr": "Vox", "notas": "Comunicador — manter em inglês" },
+    "Vox-caster": { "ptbr": "Vox-emissor" },
+    "Lho-stick": { "ptbr": "Cigarro lho" },
+    "Amasec": { "ptbr": "Amasec", "notas": "Bebida — manter" },
+    "Recaf": { "ptbr": "Recaf", "notas": "Bebida — manter" }
   },
 
   "termos_nao_traduzir": [
@@ -136,6 +161,215 @@
     "Plaguebearer",
     "Spawn of Chaos"
   ],
+
+  "termos_nao_traduzir_personagens": {
+    "_nota": "Personagens do Rogue Trader — nomes próprios nunca traduzidos, apenas títulos/cargos ao redor deles",
+    "companheiros": [
+      "Abelard Werserian",
+      "Cassia Orsellio",
+      "Argenta",
+      "Idira Tlass",
+      "Pasqal Haneumann",
+      "Yrliet Lanaevyss",
+      "Ulfar",
+      "Heinrix van Calox",
+      "Marazhai",
+      "Jae Heydari",
+      "Kibellah",
+      "Sandor Dagustravan"
+    ],
+    "antagonistas_e_npcs_notaveis": [
+      "Nomos Dellasarius",
+      "Theodora von Valancius",
+      "Calligos Winterscale",
+      "Bastian Orsellio",
+      "The Architect of Fate"
+    ]
+  },
+
+  "termos_nao_traduzir_locais": {
+    "_nota": "Locais do Rogue Trader — nomes de lugares do universo WH40K nunca traduzidos",
+    "locais_jogo": [
+      "Koronus Expanse",
+      "Port Wander",
+      "Footfall",
+      "The Maw",
+      "Passage of Gallows",
+      "Svard",
+      "Dargonus",
+      "Sepulchre"
+    ],
+    "locais_imperiais": [
+      "Terra",
+      "Mars",
+      "Macragge",
+      "Cadia",
+      "Armageddon",
+      "Fenris"
+    ]
+  },
+
+  "termos_nao_traduzir_instituicoes": {
+    "_nota": "Organizações e instituições do universo WH40K — nomes em latim/inglês são parte do lore",
+    "imperiais": [
+      "Adeptus Administratum",
+      "Adeptus Astartes",
+      "Adeptus Custodes",
+      "Navis Nobilite",
+      "Ecclesiarchy",
+      "Ministorum",
+      "Adeptus Arbites",
+      "Officio Assassinorum",
+      "Ordo Malleus",
+      "Ordo Xenos",
+      "Ordo Hereticus",
+      "Astra Militarum",
+      "Schola Progenium",
+      "Munitorum",
+      "Inquisition",
+      "Holy Ordos"
+    ],
+    "subdivisoes_astartes": [
+      "Space Wolves",
+      "Grey Knights",
+      "Deathwatch",
+      "Blood Angels",
+      "Dark Angels",
+      "Ultramarines",
+      "Imperial Fists",
+      "Black Templars",
+      "Salamanders",
+      "Raven Guard",
+      "Iron Hands",
+      "White Scars"
+    ],
+    "chaos_e_heresia": [
+      "Chaos Space Marines",
+      "Word Bearers",
+      "Alpha Legion",
+      "Iron Warriors",
+      "World Eaters",
+      "Death Guard",
+      "Thousand Sons",
+      "Night Lords",
+      "Emperor's Children",
+      "Black Legion"
+    ],
+    "xenos": [
+      "Drukhari",
+      "Craftworld",
+      "Commoragh",
+      "Hive Fleet",
+      "Necron Dynasty",
+      "T'au Empire",
+      "Greater Good",
+      "Leagues of Votann"
+    ]
+  },
+
+  "termos_nao_traduzir_armas_e_equipamentos": {
+    "_nota": "Armas e equipamentos com nomes canônicos do universo WH40K",
+    "armas_distancia": [
+      "Bolter",
+      "Boltgun",
+      "Bolt Pistol",
+      "Heavy Bolter",
+      "Storm Bolter",
+      "Combi-bolter",
+      "Lasgun",
+      "Laspistol",
+      "Longlas",
+      "Hotshot Lasgun",
+      "Hellgun",
+      "Plasma Gun",
+      "Plasma Pistol",
+      "Plasma Cannon",
+      "Meltagun",
+      "Multi-melta",
+      "Melta Pistol",
+      "Flamer",
+      "Heavy Flamer",
+      "Autocannon",
+      "Lascannon",
+      "Missile Launcher",
+      "Grenade Launcher",
+      "Stub Gun",
+      "Autopistol",
+      "Autogun",
+      "Hand Cannon"
+    ],
+    "armas_corpo_a_corpo": [
+      "Chainsword",
+      "Chainaxe",
+      "Power Sword",
+      "Power Axe",
+      "Power Fist",
+      "Power Maul",
+      "Thunder Hammer",
+      "Force Sword",
+      "Force Staff",
+      "Force Axe",
+      "Eviscerator",
+      "Witchblade",
+      "Nemesis Force Weapon"
+    ],
+    "equipamentos": [
+      "Mechadendrite",
+      "Servo-skull",
+      "Servo-arm",
+      "Power Armour",
+      "Carapace Armour",
+      "Flak Armour",
+      "Terminator Armour",
+      "Jump Pack",
+      "Rosarius",
+      "Refractor Field",
+      "Conversion Field",
+      "Krak Grenade",
+      "Frag Grenade",
+      "Melta Bomb"
+    ]
+  },
+
+  "termos_nao_traduzir_titulos": {
+    "_nota": "Títulos e patentes que funcionam como nomes próprios no universo WH40K",
+    "imperiais": [
+      "Inquisitor",
+      "Inquisitor Lord",
+      "Grand Master",
+      "High Lord",
+      "Lord-Governor",
+      "Sector Governor",
+      "Archmagos",
+      "Fabricator-General",
+      "Magos",
+      "Tech-Priest",
+      "Techpriest",
+      "Enginseer",
+      "Skitarii",
+      "Kasrkin",
+      "Canoness",
+      "Celestian",
+      "Battle-Sister",
+      "Seraphim",
+      "Repentia",
+      "Confessor",
+      "Missionary",
+      "Explorator",
+      "Navigators",
+      "Wolf Guard",
+      "Long Fang",
+      "Blood Claw",
+      "Deathwatch Veteran"
+    ],
+    "inquisicao_assassinos": [
+      "Vindicare",
+      "Eversor",
+      "Callidus",
+      "Culexus",
+      "Vanus"
+    ]
+  },
 
   "concordancia_genero": {
     "nave": "feminino — a nave, da nave, na nave",

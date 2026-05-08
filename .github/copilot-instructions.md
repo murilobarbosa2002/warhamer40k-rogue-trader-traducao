@@ -20,8 +20,41 @@ Este é um projeto colaborativo de tradução do jogo **Warhammer 40,000: Rogue 
 | Script | Função | Principais flags |
 |--------|--------|-----------------|
 | `scripts/translate_batch.py` | Pipeline de tradução com IA | `--provider`, `--limite`, `--dry-run`, `--reset` |
+| `scripts/split.py` | Migra enGB.json → `src/strings/<categoria>.json` (rodar 1x) | `--dry-run`, `--stats` |
+| `scripts/compile.py` | Reconstrói enGB.json a partir de `src/strings/` | `--dry-run`, `--stats`, `--validar` |
 | `scripts/build_from_original.py` | Reconstrói enGB.json limpo | `--stats`, `--dry-run` |
 | `scripts/diff_original.py` | Gera fila de trabalho | `--stats`, `--output` |
+
+### Arquitetura de fontes `src/strings/`
+
+O projeto usa uma arquitetura de **arquivos-fonte por categoria** como fonte da verdade:
+
+```
+src/strings/
+  ui.json          # Interface (botões, menus, etc.)
+  tutorial.json    # Dicas e tutoriais
+  combate.json     # Combate e mecânicas
+  enciclopedia.json# Enciclopédia e lore
+  itens.json       # Itens e equipamentos
+  missoes.json     # Missões e objetivos
+  personagens.json # Personagens e NPCs
+  dialogo.json     # Diálogos e narrativa
+  outros.json      # Strings não categorizadas
+```
+
+**Formato de cada entrada:**
+```json
+"uuid": {
+  "en": "texto original inglês (referência, nunca alterar)",
+  "pt": "texto traduzido em português",
+  "status": "approved|machine|pending"
+}
+```
+
+**Fluxo de trabalho:**
+1. Editar `pt` nos arquivos `src/strings/*.json`
+2. Rodar `python3 scripts/compile.py --validar` para gerar `enGB.json`
+3. `enGB.json` é o artefato final para o mod
 
 ### Scripts de correção
 
@@ -46,6 +79,8 @@ Este é um projeto colaborativo de tradução do jogo **Warhammer 40,000: Rogue 
 
 | Arquivo | Descrição |
 |---------|-----------|
+| `src/strings/` | Fonte da verdade — arquivos por categoria (no git) |
+| `enGB.json` | Artefato compilado — gerado por `compile.py` (no git para uso como mod) |
 | `Makefile` | Atalhos para todos os comandos (`make help` para listar) |
 | `requirements.txt` | Dependências Python com versões fixas |
 | `.env` / `.env.example` | Configuração de provedores de IA e parâmetros |
@@ -63,6 +98,7 @@ Este é um projeto colaborativo de tradução do jogo **Warhammer 40,000: Rogue 
 ```python
 ROOT = Path(__file__).parent.parent   # raiz do projeto
 ENDB_PATH = ROOT / "enGB.json"        # sempre via ROOT
+SRC_DIR = ROOT / "src" / "strings"    # arquivos-fonte por categoria
 TAG_RE = re.compile(r"\{[^}]+\}|<[^>]+>")  # regex padrão de tags
 ```
 
@@ -219,6 +255,10 @@ make relatorio          # relatorio.py
 make categorias         # categorizar.py --nao-traduzidas
 make exportar-categorias  # categorizar.py --exportar → revisao/
 
+make split              # split.py — migrar enGB.json para src/strings/ (rodar 1x)
+make compile            # compile.py --validar — reconstruir enGB.json a partir de src/
+make split-stats        # split.py --stats — ver % de tradução por categoria
+
 make fix                # fix_auto.py (com confirmação)
 make fix-tags           # fix_tags.py (com confirmação)
 make fix-gender         # fix_gender.py (com confirmação)
@@ -235,7 +275,7 @@ make check-grammar-full # check_grammar.py (spaCy + LanguageTool, requer Java)
 make check-consistency  # check_consistency.py --limite 3000
 
 make release            # release.py (pede versão interativamente)
-make commit-traducao    # git add enGB.json + commit padronizado + push
+make commit-traducao    # git add enGB.json src/strings/ + commit padronizado + push
 ```
 
 ---
@@ -406,7 +446,21 @@ Consulte sempre `glossario.json` na raiz do projeto. Os termos abaixo são obrig
 
 ### Termos que NUNCA são traduzidos (nomes próprios do universo WH40K)
 
-`Rogue Trader`, `Astartes`, `Space Marine`, `Adeptus Mechanicus`, `Adepta Sororitas`, `Inquisition`, `Mechanicus`, `Omnissiah`, `Immaterium`, `Chaos` (quando nome próprio), `Eldar`, `Aeldari`, `Tau`, `Ork`, `Necron`, `Tyranid`, `Bolter`, `Boltgun`, `Lasgun`, `Laspistol`, `Longlas`, `Vox`, `Mechadendrite`, `Servo-skull`, `Throne` (quando "Golden Throne"), `Webway`, `Warp` (quando nome próprio), `Ferrum Sanctum`, `Omnissias`.
+**Facções e organizações:** `Rogue Trader`, `Astartes`, `Space Marine`, `Adeptus Mechanicus`, `Adepta Sororitas`, `Adeptus Astartes`, `Adeptus Administratum`, `Adeptus Custodes`, `Inquisition`, `Holy Ordos`, `Ordo Malleus`, `Ordo Xenos`, `Ordo Hereticus`, `Navis Nobilite`, `Ecclesiarchy`, `Ministorum`, `Adeptus Arbites`, `Officio Assassinorum`, `Astra Militarum`, `Mechanicus`, `Space Wolves`, `Grey Knights`, `Deathwatch`, `Chaos Space Marines`, `Black Legion`, `Death Guard`, `Thousand Sons`, `World Eaters`, `Drukhari`, `Craftworld`, `Leagues of Votann`
+
+**Entidades e conceitos:** `Omnissiah`, `Omnissias`, `Immaterium`, `Chaos` (quando nome próprio), `Eldar`, `Aeldari`, `Tau`, `Ork`, `Necron`, `Tyranid`, `Daemon`, `Daemonhost`, `Nurgle`, `Tzeentch`, `Khorne`, `Slaanesh`, `Warp` (quando nome próprio), `Hive Mind`, `Genestealer`
+
+**Armas e equipamentos:** `Bolter`, `Boltgun`, `Bolt Pistol`, `Heavy Bolter`, `Storm Bolter`, `Lasgun`, `Laspistol`, `Longlas`, `Hotshot Lasgun`, `Hellgun`, `Plasma Gun`, `Plasma Pistol`, `Meltagun`, `Multi-melta`, `Flamer`, `Heavy Flamer`, `Autocannon`, `Lascannon`, `Chainsword`, `Chainaxe`, `Power Sword`, `Power Fist`, `Thunder Hammer`, `Force Sword`, `Eviscerator`, `Power Armour`, `Terminator Armour`, `Rosarius`, `Mechadendrite`, `Servo-skull`, `Krak Grenade`, `Frag Grenade`
+
+**Itens e objetos do lore:** `Vox`, `Vox-caster`, `Cogitator`, `Mechadendrite`, `Servo-skull`, `Throne` (quando "Golden Throne"), `Webway`, `Gellar Field`, `Astronomican`, `Ferrum Sanctum`
+
+**Títulos e patentes:** `Inquisitor`, `Archmagos`, `Magos`, `Tech-Priest`, `Enginseer`, `Skitarii`, `Kasrkin`, `Canoness`, `Celestian`, `Battle-Sister`, `Seraphim`, `Confessor`, `Missionary`, `Explorator`, `Vindicare`, `Eversor`, `Callidus`, `Culexus`
+
+**Personagens do Rogue Trader:** `Abelard Werserian`, `Cassia Orsellio`, `Argenta`, `Idira Tlass`, `Pasqal Haneumann`, `Yrliet Lanaevyss`, `Ulfar`, `Heinrix van Calox`, `Marazhai`, `Jae Heydari`, `Kibellah`, `Sandor Dagustravan`, `Calligos Winterscale`, `Theodora von Valancius`
+
+**Locais:** `Port Wander`, `Footfall`, `The Maw`, `Passage of Gallows`, `Svard`, `Dargonus`, `Sepulchre`, `Terra`, `Mars`, `Cadia`, `Fenris`, `Macragge`
+
+> Lista completa com anotações em `glossario.json` — seções `termos_nao_traduzir_*`
 
 ## Regras de Tradução
 

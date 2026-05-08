@@ -6,11 +6,11 @@ Bem-vindo! Este é um projeto colaborativo de tradução para o português brasi
 
 > Execute `python3 scripts/relatorio.py` para ver o estado mais recente.
 
-Problemas conhecidos que precisam de atenção:
-- **~510 strings ainda em inglês** (não traduzidas)
-- **~193 strings com tags desbalanceadas** (herança da tradução automática original)
-- **Concordância de gênero** incorreta em ~112 strings (`o nave` → `a nave`)
-- **Tom muito literal/robótico** em partes da tradução automática original
+Estado após a refatoração da arquitetura:
+- **~99% das strings traduzidas** (automaticamente via Helsinki-NLP)
+- **0 erros de tag** (corrigidos pelos scripts de fix)
+- **Score de qualidade: 9.7/10**
+- Foco atual: **revisão humana da qualidade** — o conteúdo está traduzido, mas partes ainda precisam de revisão de tom e terminologia WH40K
 
 ---
 
@@ -27,7 +27,10 @@ cd warhamer40k-rogue-trader-traducao
 # Criar ambiente virtual e instalar dependências
 python3 -m venv .venv
 source .venv/bin/activate
-pip install tqdm rich groq python-dotenv deep-translator
+pip install -r requirements.txt
+
+# Baixar modelo de linguagem PT (para check_grammar.py)
+.venv/bin/python -m spacy download pt_core_news_sm
 
 # Copiar configuração de IA (opcional — só necessário para tradução automática)
 cp .env.example .env
@@ -51,11 +54,42 @@ git checkout -b traducao/strings-capitulo-2
 - `revisao/` — revisão de qualidade de strings já traduzidas
 - `glossario/` — atualiza o glossário canônico
 
-### 2. Edite o arquivo `enGB.json`
+### 2. Edite os arquivos `src/strings/<categoria>.json`
+
+O projeto usa uma arquitetura de fontes por categoria. **Não edite `enGB.json` diretamente** — ele é gerado automaticamente.
+
+```
+src/strings/
+  ui.json          ← Interface (botões, menus)
+  tutorial.json    ← Dicas e tutoriais
+  combate.json     ← Combate e mecânicas
+  enciclopedia.json← Enciclopédia e lore
+  itens.json       ← Itens e equipamentos
+  missoes.json     ← Missões e objetivos
+  personagens.json ← Personagens e NPCs
+  dialogo.json     ← Diálogos e narrativa
+  outros.json      ← Strings não categorizadas
+```
+
+Cada entrada tem o formato:
+```json
+"uuid-da-string": {
+  "en": "texto original em inglês (referência, nunca alterar)",
+  "pt": "texto traduzido em português",
+  "status": "approved"
+}
+```
+
+Ao revisar uma string, altere o campo `"pt"` e mude `"status"` para `"approved"`.
+
+Após editar, reconstrua o `enGB.json`:
+```bash
+python3 scripts/compile.py --validar
+```
 
 **NUNCA altere:**
 - UUIDs (as chaves do JSON)
-- O campo `"Offset"`
+- O campo `"en"` (texto de referência)
 - Identificadores dentro de tags: `{g|Encyclopedia:NomeDaCoisa}` — só o texto entre as tags
 
 **SEMPRE consulte:**
@@ -65,6 +99,10 @@ git checkout -b traducao/strings-capitulo-2
 ### 3. Valide suas alterações
 
 ```bash
+# Reconstruir enGB.json a partir dos src/ e validar
+python3 scripts/compile.py --validar
+
+# Ou só validar o enGB.json atual
 python3 scripts/validate.py
 ```
 
@@ -72,8 +110,8 @@ O CI também roda isso automaticamente no PR. PRs com erros estruturais não ser
 
 ### 4. Abra o Pull Request
 
-- Título: `[fix] Corrige X strings com termo "cooldown"` ou `[trad] Traduz strings do Capítulo 3`
-- Descreva quais UUIDs ou áreas foram alterados
+- Título: `[fix] Corrige X strings com termo "cooldown"` ou `[trad] Traduz strings do Capítulo 3` ou `[revisao] Melhora tom das falas do Argenta`
+- Descreva quais arquivos/categorias foram alterados
 - Se alterou muitas strings, mostre 2-3 exemplos de antes/depois
 
 ---
@@ -137,25 +175,19 @@ Termos que **nunca** se traduzem: `Rogue Trader`, `Astartes`, `Space Marine`, `B
 ## Scripts disponíveis
 
 ```bash
-# Ver quantas strings ainda precisam de tradução
-python3 scripts/diff_original.py --stats
+# Ver estatísticas de tradução por categoria
+python3 scripts/split.py --stats
 
-# Traduzir strings faltando com IA (Ollama local, sem custo)
-python3 scripts/translate_batch.py
+# Após editar src/strings/, reconstruir enGB.json
+python3 scripts/compile.py --validar
+
+# Traduzir strings pendentes com IA (Helsinki-NLP, sem internet após download)
+python3 scripts/translate_batch.py --provider helsinki
 
 # Traduzir apenas 50 strings para testar
 python3 scripts/translate_batch.py --limite 50
 
-# Usar Google Translate como alternativa (sem instalar nada extra)
-python3 scripts/translate_batch.py --provider deep_translator
-
-# Reconstruir enGB.json limpo (remove strings obsoletas)
-python3 scripts/build_from_original.py --dry-run
-
-# Aplicar correções automáticas de terminologia (simulação)
-python3 scripts/fix_auto.py --dry-run
-
-# Aplicar correções automáticas (de verdade)
+# Aplicar correções automáticas de terminologia
 python3 scripts/fix_auto.py
 
 # Validar integridade do JSON
@@ -163,16 +195,26 @@ python3 scripts/validate.py
 
 # Ver relatório completo de qualidade
 python3 scripts/relatorio.py
+
+# Verificar gramática PT-BR
+python3 scripts/check_grammar.py --spacy-only
+
+# Todos os comandos disponíveis
+make help
 ```
 
 | Script | Descrição |
-|--------|----------|
-| `diff_original.py` | Compara EN original vs PT, gera fila de trabalho |
-| `translate_batch.py` | Traduz com IA — Ollama → Groq → Google, com checkpoint |
-| `build_from_original.py` | Reconstrói enGB.json limpo a partir do arquivo EN original |
+|--------|-----------|
+| `split.py` | Migra enGB.json para `src/strings/` por categoria |
+| `compile.py` | Reconstrói enGB.json a partir de `src/strings/` |
+| `translate_batch.py` | Traduz com IA — Translation Memory → Helsinki → Ollama → Groq → Google |
 | `fix_auto.py` | Correções automáticas seguras (MP→PM, AP→PA, cooldown→recarga) |
-| `validate.py` | Valida estrutura JSON e balanço de tags `{g|..}{/g}` |
+| `fix_tags.py` | Repara tags `{g|..}{/g}` desbalanceadas |
+| `fix_gender.py` | Corrige concordância de gênero |
+| `validate.py` | Valida estrutura JSON e balanço de tags |
 | `relatorio.py` | Relatório completo: score, erros, estatísticas |
+| `check_grammar.py` | Verifica gramática PT-BR com spaCy + LanguageTool |
+| `check_consistency.py` | Detecta strings EN similares com traduções PT inconsistentes |
 
 ---
 

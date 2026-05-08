@@ -103,6 +103,20 @@ categorias: ## Ver distribuição de strings por categoria temática
 exportar-categorias: ## Exportar strings por categoria para revisao/
 	$(PYTHON) scripts/categorizar.py --exportar
 
+# ─── Arquitetura src/strings/ ─────────────────────────────────────────────────
+
+.PHONY: split
+split: ## Migrar enGB.json para src/strings/<categoria>.json (rodar 1x)
+	$(PYTHON) scripts/split.py
+
+.PHONY: compile
+compile: ## Reconstruir enGB.json a partir de src/strings/ + validar
+	$(PYTHON) scripts/compile.py --validar
+
+.PHONY: split-stats
+split-stats: ## Ver estatísticas de tradução por categoria
+	$(PYTHON) scripts/split.py --stats
+
 # ─── Releases ────────────────────────────────────────────────────────────────
 
 .PHONY: release
@@ -113,7 +127,7 @@ release: validar ## Empacotar enGB.json para uma nova release
 
 .PHONY: commit-traducao
 commit-traducao: validar ## Commit e push das traduções após validação
-	git add enGB.json
+	git add enGB.json src/strings/ glossario.json
 	git commit -m "feat(tradução): atualiza traduções via pipeline de IA"
 	git push
 

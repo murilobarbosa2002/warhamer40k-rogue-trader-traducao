@@ -6,7 +6,7 @@
 
 Mod de tradução não oficial para o português brasileiro do jogo **Warhammer 40,000: Rogue Trader** (Owlcat Games).
 
-> **Status:** 92,1% traduzido — 64.289 de 69.795 strings. ~510 strings ainda em inglês.
+> **Status:** ~99% traduzido — 69.377+ de 69.795 strings. Arquitetura de fontes `src/strings/` implementada. Score de qualidade: 9.7/10.
 
 ---
 
@@ -44,10 +44,11 @@ Este projeto parte da tradução publicada no Nexus Mods por [fabiobassini](http
 
 | Métrica | Valor |
 |---------|-------|
-| Strings traduzidas | ~64.289 (92,1%) |
-| Strings ainda em inglês | ~510 (0,7%) |
+| Strings traduzidas | ~69.377 (~99%) |
+| Strings ainda em inglês | ~418 (em tradução automática) |
 | Strings simbólicas/tags | ~4.981 (7,1%) |
-| Erros de tag conhecidos | ~193 (herança da tradução automática original) |
+| Erros de tag | 0 |
+| Score de qualidade | 9.7/10 |
 
 Para ver o relatório completo atualizado:
 ```bash
@@ -80,44 +81,67 @@ cd warhamer40k-rogue-trader-traducao
 # Criar ambiente virtual e instalar dependências
 python3 -m venv .venv
 source .venv/bin/activate
-pip install tqdm rich groq python-dotenv deep-translator
+pip install -r requirements.txt
 
-# Configurar provedores de IA (opcional)
+# Baixar modelo de linguagem PT para gramática (opcional)
+.venv/bin/python -m spacy download pt_core_news_sm
+
+# Configurar provedores de IA (opcional — só para tradução automática)
 cp .env.example .env
-# Edite .env com suas chaves de API
+```
+
+### Arquitetura de fontes
+
+As traduções são mantidas em `src/strings/<categoria>.json` e compiladas para `enGB.json`:
+
+```bash
+# Ver estatísticas por categoria
+make split-stats
+
+# Após editar src/strings/, reconstruir enGB.json
+make compile
+
+# Validar o resultado
+make validar
 ```
 
 ### Tradução automática com IA
 
 O projeto usa uma pipeline de IA com fallback automático:
-**Ollama (local)** → **Groq (cloud gratuito)** → **Google Translate**
+**Translation Memory** → **Helsinki-NLP (local, offline)** → **Ollama (local)** → **Groq (cloud gratuito)** → **Google Translate**
 
 ```bash
-# Ver quantas strings precisam de tradução
-python3 scripts/diff_original.py --stats
+# Traduzir strings pendentes com Helsinki-NLP (sem internet, ~465MB)
+python3 scripts/translate_batch.py --provider helsinki
 
-# Traduzir com IA local (Ollama)
-# Instale primeiro: curl -fsSL https://ollama.com/install.sh | sudo sh
-# Depois: ollama pull llama3.1:8b
-python3 scripts/translate_batch.py
+# Traduzir com Ollama local (requer ollama pull llama3.1:8b)
+python3 scripts/translate_batch.py --provider ollama
 
 # Traduzir apenas 50 strings para testar
 python3 scripts/translate_batch.py --limite 50
 
-# Usar Google Translate (sem instalar nada)
-python3 scripts/translate_batch.py --provider deep_translator
+# Retomar de onde parou (checkpoint automático)
+python3 scripts/translate_batch.py
 ```
 
 ### Scripts disponíveis
 
 | Script | Descrição |
 |--------|-----------|
-| `scripts/diff_original.py` | Compara EN original vs PT, gera fila de trabalho |
-| `scripts/translate_batch.py` | Traduz strings com IA (Ollama/Groq/Google) |
-| `scripts/build_from_original.py` | Reconstrói enGB.json limpo a partir do original |
+| `scripts/split.py` | Migra enGB.json para `src/strings/` por categoria (1x) |
+| `scripts/compile.py` | Reconstrói enGB.json a partir de `src/strings/` |
+| `scripts/translate_batch.py` | Traduz strings com IA (Helsinki/Ollama/Groq/Google) |
 | `scripts/fix_auto.py` | Correções automáticas de terminologia (MP→PM, etc.) |
+| `scripts/fix_tags.py` | Repara tags `{g|..}{/g}` desbalanceadas |
+| `scripts/fix_gender.py` | Corrige concordância de gênero |
 | `scripts/validate.py` | Valida estrutura JSON e balanço de tags |
 | `scripts/relatorio.py` | Relatório completo de qualidade |
+| `scripts/check_grammar.py` | Verificação gramatical com spaCy + LanguageTool |
+| `scripts/check_consistency.py` | Detecta traduções inconsistentes para strings similares |
+
+```bash
+make help  # lista todos os comandos disponíveis
+```
 
 ### Agentes Copilot (VS Code)
 
@@ -128,6 +152,9 @@ Se você usa VS Code com GitHub Copilot, há agentes especializados disponíveis
 | **Tradutor WH40K** | Traduz strings com terminologia WH40K correta |
 | **Revisor de Qualidade** | Revisa tom, terminologia e gramática |
 | **Corretor Automático** | Aplica correções em massa via scripts |
+| **Desenvolvedor** | Escreve e modifica scripts Python do projeto |
+| **Arquiteto** | Revisa decisões de design e trade-offs |
+| **DevOps** | CI/CD, releases, pre-commit e troubleshooting |
 
 ---
 
@@ -148,9 +175,15 @@ Os termos principais obrigatórios:
 | The Warp | O Imaterium / A Distorção |
 | Lord Captain | Capitão-Comandante |
 
-Termos que **nunca** se traduzem: `Rogue Trader`, `Astartes`, `Space Marine`, `Bolter`, `Warp`, `Immaterium`, `Chaos`, `Ork`, `Eldar`, `Necron`, `Mechanicus`, `Omnissiah`, `Inquisition`, `Vox`, `Mechadendrite`, `Servo-skull`, `Webway`.
+Termos que **nunca** se traduzem (nomes próprios do universo WH40K):
 
-Glossário completo em [`glossario.json`](./glossario.json).
+- **Facções:** `Rogue Trader`, `Astartes`, `Adeptus Mechanicus`, `Adepta Sororitas`, `Inquisition`, `Astra Militarum`, `Space Wolves`, `Grey Knights`, `Drukhari`, `Leagues of Votann`
+- **Entidades:** `Chaos`, `Warp`, `Immaterium`, `Omnissiah`, `Eldar`, `Ork`, `Necron`, `Tyranid`, `Daemon`, `Nurgle`, `Tzeentch`, `Khorne`, `Slaanesh`
+- **Armas:** `Bolter`, `Lasgun`, `Plasma Gun`, `Meltagun`, `Chainsword`, `Power Sword`, `Thunder Hammer`
+- **Personagens:** `Abelard Werserian`, `Cassia Orsellio`, `Argenta`, `Idira Tlass`, `Pasqal Haneumann`, `Yrliet Lanaevyss`, `Ulfar`, `Heinrix van Calox`, `Marazhai`, `Jae Heydari`
+- **Locais:** `Port Wander`, `Footfall`, `The Maw`, `Koronus Expanse`
+
+Lista completa (150+ termos) em [`glossario.json`](./glossario.json).
 
 ---
 

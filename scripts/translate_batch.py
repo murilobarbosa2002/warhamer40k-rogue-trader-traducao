@@ -196,40 +196,68 @@ def translate_google(text: str) -> str:
 _helsinki_pipeline = None
 
 
-def translate_helsinki(text: str) -> str:
-    """Traduz usando Helsinki-NLP/opus-mt-tc-big-en-pt (modelo local offline, ~300MB)."""
+def _get_helsinki_pipeline():
+    """Retorna o modelo Helsinki, carregando na primeira chamada (singleton)."""
     global _helsinki_pipeline
+    if _helsinki_pipeline is not None:
+        return _helsinki_pipeline
     try:
-        from transformers import pipeline as hf_pipeline
+        from transformers import MarianMTModel, MarianTokenizer
     except ImportError:
         raise RuntimeError("transformers não instalado: pip install transformers sentencepiece")
+    import logging
+    logging.getLogger("transformers").setLevel(logging.ERROR)
+    model_name = "Helsinki-NLP/opus-mt-tc-big-en-pt"
+    print(f"  [Helsinki] Carregando modelo {model_name} (~300MB, CPU)...", flush=True)
+    tokenizer = MarianTokenizer.from_pretrained(model_name)
+    model = MarianMTModel.from_pretrained(model_name)
+    _helsinki_pipeline = (model, tokenizer)
+    print("  [Helsinki] Modelo carregado.", flush=True)
+    return _helsinki_pipeline
 
-    if _helsinki_pipeline is None:
-        print("  [Helsinki] Carregando modelo opus-mt-tc-big-en-pt (primeira vez, ~300MB)...")
-        _helsinki_pipeline = hf_pipeline(
-            "translation",
-            model="Helsinki-NLP/opus-mt-tc-big-en-pt",
-            device=-1,  # CPU
-        )
 
-    # Protege as tags substituindo por placeholders
-    tags = TAG_RE.findall(text)
-    protected = text
-    placeholders = {}
-    for i, tag in enumerate(tags):
-        ph = f"XTAG{i}X"
-        placeholders[ph] = tag
-        protected = protected.replace(tag, ph, 1)
+def translate_helsinki(text: str) -> str:
+    """Traduz usando Helsinki-NLP/opus-mt-tc-big-en-pt.
 
-    # O modelo tem limite de ~512 tokens; trunca se necessário
-    result = _helsinki_pipeline(protected, max_length=512)
-    translated = result[0]["translation_text"]
+    Usa tradução por segmentos: divide o texto entre tags, traduz cada parte
+    separadamente e reassembla. Garante que as tags sejam sempre preservadas
+    exatamente, sem precisar de fallback para Google.
+    """
+    model, tokenizer = _get_helsinki_pipeline()
 
-    # Restaura as tags
-    for ph, tag in placeholders.items():
-        translated = translated.replace(ph, tag)
+    def _translate_segment(seg: str) -> str:
+        if not seg.strip():
+            return seg
+        inputs = tokenizer(seg, return_tensors="pt", padding=True, truncation=True, max_length=512)
+        translated = model.generate(**inputs)
+        return tokenizer.decode(translated[0], skip_special_tokens=True)
 
-    return translated
+    # Dividir texto em segmentos: [texto, tag, texto, tag, ...]
+    segments = []
+    last = 0
+    for m in TAG_RE.finditer(text):
+        if m.start() > last:
+            segments.append(("text", text[last:m.start()]))
+        segments.append(("tag", m.group()))
+        last = m.end()
+    if last < len(text):
+        segments.append(("text", text[last:]))
+
+    # Se não há tags, traduzir diretamente
+    if not any(s[0] == "tag" for s in segments):
+        return _translate_segment(text)
+
+    # Traduzir apenas os segmentos de texto (não as tags)
+    result_parts = []
+    for seg_type, seg_val in segments:
+        if seg_type == "tag":
+            result_parts.append(seg_val)
+        elif seg_val.strip():
+            result_parts.append(_translate_segment(seg_val))
+        else:
+            result_parts.append(seg_val)
+
+    return "".join(result_parts)
 
 
 def translate_with_fallback(text: str, provider: str) -> tuple[str, str]:
@@ -329,6 +357,20 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
         if tm:
             print(f"Translation memory: {len(tm):,} pares aprovados carregados")
 
+    # Carregar nomes próprios que NUNCA devem ser traduzidos
+    nao_traduzir: set[str] = set()
+    if GLOSSARIO_PATH.exists():
+        with open(GLOSSARIO_PATH, encoding="utf-8") as f:
+            glossario = json.load(f)
+        nao_traduzir.update(t.lower() for t in glossario.get("termos_nao_traduzir", []))
+        for group_key in ["termos_nao_traduzir_personagens", "termos_nao_traduzir_locais",
+                          "termos_nao_traduzir_instituicoes", "termos_nao_traduzir_armas_e_equipamentos",
+                          "termos_nao_traduzir_titulos"]:
+            group = glossario.get(group_key, {})
+            for v in group.values():
+                if isinstance(v, list):
+                    nao_traduzir.update(t.lower() for t in v)
+
     # Identificar strings não traduzidas
     TAG_ONLY = re.compile(r"^[\s\{<\[%\-\d\.\*,/\|]+$")
     PT_RE = re.compile(
@@ -361,6 +403,19 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
         if not re.search(r"[a-zA-Z]{3}", clean_orig):
             continue
 
+        # Pular se o texto inteiro for um nome próprio que não deve ser traduzido
+        if clean_orig.lower() in nao_traduzir:
+            continue
+
+        # Pular nomes de empresa/produto (Inc., Ltd., Pty., etc.)
+        if re.search(r"\b(Inc|Ltd|Pty|Corp|LLC|GmbH|S\.A)\b\.?", clean_orig):
+            continue
+
+        # Pular strings curtas (≤5 palavras) onde alguma palavra é nome próprio
+        words = re.sub(r"[()[\]{}]", "", clean_orig).split()
+        if len(words) <= 5 and any(w.lower() in nao_traduzir for w in words):
+            continue
+
         if clean_orig.lower() == clean_trad.lower():
             fila.append((key, orig_text))
         elif EN_RE.search(clean_trad) and not PT_RE.search(clean_trad):
@@ -371,6 +426,10 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
 
     print(f"\nProvedor: {provider.upper()}")
     print(f"Strings para traduzir: {len(fila):,}")
+
+    # Pré-aquecer o modelo Helsinki antes do loop (evita latência na 1ª string)
+    if provider == "helsinki" and fila and not dry_run:
+        _get_helsinki_pipeline()
     print(f"Já traduzidas (checkpoint): {len(ja_traduzidas):,}")
 
     if dry_run:
@@ -411,13 +470,10 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
                     translated, used_provider = translate_with_fallback(en_text, provider)
                 translated = apply_glossary_fixes(translated)
 
-                # Verificar integridade das tags
+                # Verificar integridade das tags (log apenas, Helsinki usa segmentos)
                 if not tags_preserved(en_text, translated):
-                    # Tentar reparar: usar o texto original para strings curtas
                     if not quiet:
-                        print(f"\n  AVISO [{key[:8]}]: tags alteradas — usando fallback Google")
-                    translated, used_provider = translate_with_fallback(en_text, "deep_translator")
-                    translated = apply_glossary_fixes(translated)
+                        print(f"\n  AVISO [{key[:8]}]: tags alteradas (provedor={used_provider})", flush=True)
 
                 # Salvar no checkpoint
                 checkpoint["traduzidas"][key] = {
@@ -449,13 +505,18 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
     # Salvar checkpoint final
     save_checkpoint(checkpoint)
 
-    # Aplicar todas as traduções ao enGB.json
+    # Aplicar todas as traduções ao enGB.json e src/strings/ (se existir)
     print("\nAplicando traduções ao enGB.json...")
     n_aplicadas = _apply_checkpoint_to_json(data, checkpoint)
 
     print(f"\nSalvando enGB.json...")
     with open(ENDB_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+    # Aplicar também aos arquivos src/strings/ se existirem
+    src_dir = ROOT / "src" / "strings"
+    if src_dir.exists():
+        _apply_checkpoint_to_src(src_dir, checkpoint)
 
     print()
     print("=" * 50)
@@ -469,7 +530,7 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
     print("Próximos passos:")
     print("  python3 scripts/validate.py")
     print("  python3 scripts/relatorio.py")
-    print('  git add enGB.json && git commit -m "feat(tradução): batch de traduções via IA"')
+    print('  git add enGB.json src/strings/ && git commit -m "feat(tradução): batch de traduções via IA"')
     return 0
 
 
@@ -482,10 +543,39 @@ def _apply_checkpoint_to_json(data: dict, checkpoint: dict) -> int:
             strings[key]["Text"] = entry["pt"]
             count += 1
         else:
-            # String nova: adicionar com offset 0
             strings[key] = {"Offset": 0, "Text": entry["pt"]}
             count += 1
     return count
+
+
+def _apply_checkpoint_to_src(src_dir: Path, checkpoint: dict):
+    """Aplica traduções do checkpoint nos arquivos src/strings/*.json."""
+    # Construir índice uuid → arquivo
+    uuid_to_file: dict[str, Path] = {}
+    file_cache: dict[str, dict] = {}
+
+    for cat_file in src_dir.glob("*.json"):
+        with open(cat_file, encoding="utf-8") as f:
+            cat_data = json.load(f)
+        file_cache[cat_file.name] = cat_data
+        for uuid in cat_data:
+            uuid_to_file[uuid] = cat_file
+
+    changed_files: set[str] = set()
+    for uuid, entry in checkpoint["traduzidas"].items():
+        if uuid in uuid_to_file:
+            fname = uuid_to_file[uuid].name
+            file_cache[fname][uuid]["pt"] = entry["pt"]
+            file_cache[fname][uuid]["status"] = "machine"
+            changed_files.add(fname)
+
+    for fname in changed_files:
+        out_path = src_dir / fname
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(file_cache[fname], f, ensure_ascii=False, indent=2)
+
+    if changed_files:
+        print(f"  src/strings/ atualizado: {len(changed_files)} arquivo(s) modificado(s)")
 
 
 def main():
