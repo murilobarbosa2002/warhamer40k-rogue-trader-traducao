@@ -1,0 +1,112 @@
+name: Validação da Tradução
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'enGB.json'
+      - 'glossario.json'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'enGB.json'
+      - 'glossario.json'
+
+jobs:
+  validar-json:
+    name: Validar estrutura do JSON
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verificar JSON válido
+        run: python3 -c "import json; json.load(open('enGB.json')); print('JSON valido')"
+
+      - name: Validar estrutura e tags
+        run: python3 scripts/validate.py
+
+      - name: Verificar glossario.json válido
+        run: python3 -c "import json; json.load(open('glossario.json')); print('Glossario valido')"
+
+  relatorio-qualidade:
+    name: Relatório de qualidade
+    runs-on: ubuntu-latest
+    needs: validar-json
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Gerar relatório de qualidade
+        run: python3 scripts/relatorio.py --output relatorio_pr.txt
+
+      - name: Exibir relatório no log
+        run: cat relatorio_pr.txt
+
+      - name: Upload relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-qualidade
+          path: relatorio_pr.txt
+          retention-days: 30
+
+  verificar-termos:
+    name: Verificar termos proibidos
+    runs-on: ubuntu-latest
+    needs: validar-json
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verificar se o PR introduz novos termos proibidos
+        run: |
+          python3 - << 'PYEOF'
+          import json, re, sys
+
+          with open('enGB.json', encoding='utf-8') as f:
+              data = json.load(f)
+
+          # Termos que nunca devem aparecer em texto PT-BR
+          forbidden = [
+              (r'\bAP\b', 'AP deveria ser PA'),
+              (r'\bMP\b', 'MP deveria ser PM'),
+              (r'\bcooldown\b', 'cooldown deveria ser recarga'),
+          ]
+
+          issues = []
+          for uuid, entry in data['strings'].items():
+              text = entry['Text']
+              for pat, msg in forbidden:
+                  # Ignora dentro de tags
+                  clean = re.sub(r'\{[^}]+\}', '', text)
+                  if re.search(pat, clean, re.IGNORECASE):
+                      issues.append(f"  [{uuid[:8]}] {msg}: {text[:80]}")
+
+          if issues:
+              print(f"AVISO: {len(issues)} ocorrências de termos não padronizados:")
+              for i in issues[:20]:
+                  print(i)
+              # Não falha o CI — apenas avisa (use sys.exit(1) para tornar bloqueante)
+          else:
+              print("Nenhum termo não padronizado encontrado.")
+          PYEOF
