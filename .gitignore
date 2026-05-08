@@ -10,9 +10,18 @@ __pycache__/
 # Checkpoint de progresso da tradução (estado local)
 .translation_checkpoint.json
 
+# Arquivo de exportação de tags para revisão manual (gerado por fix_tags.py)
+revisao-tags-manuais.json
+
+# Fila de tradução gerada por diff_original.py (estado local)
+fila-traducao.json
+
 # Arquivos temporários e relatórios gerados
 *.tmp
 relatorio_*.txt
 
 # Arquivo original EN (pesado, não faz parte do mod)
 arquivo-original-*.json
+
+# enGB reconstruído antes de ser adotado
+enGB-rebuilt.json

@@ -1,0 +1,21 @@
+# Dependências do projeto de tradução WH40K Rogue Trader PT-BR
+# Instalar: pip install -r requirements.txt
+
+# Saída de terminal formatada (tabelas, cores, progresso)
+rich==15.0.0
+
+# Barra de progresso em loops
+tqdm==4.67.1
+
+# Groq API — LLM cloud gratuito (14.400 req/dia)
+# Cadastro: https://console.groq.com/
+groq==1.2.0
+
+# Leitura de arquivo .env para configuração local
+python-dotenv==1.2.2
+
+# Google Translate sem API key (via web scraping)
+deep-translator==1.11.4
+
+# HTTP requests (usado internamente e pelo deep-translator)
+requests==2.33.1

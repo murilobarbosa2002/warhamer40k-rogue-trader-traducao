@@ -1,0 +1,34 @@
+# pre-commit — hooks que rodam automaticamente antes de cada git commit
+#
+# Instalação (única vez):
+#   pip install pre-commit
+#   pre-commit install
+#
+# Rodar manualmente em todos os arquivos:
+#   pre-commit run --all-files
+
+repos:
+  # Verificações gerais de arquivo
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer      # garante \n no fim dos arquivos
+        exclude: "enGB\\.json|arquivo-original.*\\.json"
+      - id: trailing-whitespace    # remove espaços no fim de linha
+        exclude: "enGB\\.json|arquivo-original.*\\.json"
+      - id: check-json             # valida sintaxe JSON
+        files: "glossario\\.json"  # só no glossário (enGB.json é muito grande)
+      - id: check-merge-conflict   # detecta marcadores de conflito git
+      - id: mixed-line-ending      # normaliza CRLF/LF
+        exclude: "enGB\\.json|arquivo-original.*\\.json"
+
+  # Validação customizada do enGB.json
+  - repo: local
+    hooks:
+      - id: validate-engb
+        name: "Validar enGB.json (estrutura e tags)"
+        entry: python3 scripts/validate.py
+        language: python
+        files: "enGB\\.json"
+        pass_filenames: false
+        additional_dependencies: []
