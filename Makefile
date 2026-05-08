@@ -11,6 +11,7 @@ setup: ## Cria o ambiente virtual e instala dependências
 	python3 -m venv .venv
 	.venv/bin/pip install --upgrade pip
 	.venv/bin/pip install -r requirements.txt
+	.venv/bin/python -m spacy download pt_core_news_sm
 	@echo ""
 	@echo "Ambiente pronto. Configure o .env:"
 	@echo "  cp .env.example .env"
@@ -75,6 +76,32 @@ traduzir-%: ## Traduzir N strings: make traduzir-50
 .PHONY: traduzir-google
 traduzir-google: ## Traduzir usando Google Translate (sem API key)
 	$(PYTHON) scripts/translate_batch.py --provider deep_translator
+
+.PHONY: traduzir-helsinki
+traduzir-helsinki: ## Traduzir offline com Helsinki-NLP opus-mt (~300MB no primeiro uso)
+	$(PYTHON) scripts/translate_batch.py --provider helsinki
+
+# ─── Qualidade e análise ─────────────────────────────────────────────────────
+
+.PHONY: check-grammar
+check-grammar: ## Verificar gramática PT-BR com spaCy + LanguageTool (requer Java)
+	$(PYTHON) scripts/check_grammar.py --spacy-only
+
+.PHONY: check-grammar-full
+check-grammar-full: ## Verificar gramática completa incluindo LanguageTool (mais lento)
+	$(PYTHON) scripts/check_grammar.py
+
+.PHONY: check-consistency
+check-consistency: ## Detectar strings EN similares com traduções PT inconsistentes
+	$(PYTHON) scripts/check_consistency.py --limite 3000
+
+.PHONY: categorias
+categorias: ## Ver distribuição de strings por categoria temática
+	$(PYTHON) scripts/categorizar.py --nao-traduzidas
+
+.PHONY: exportar-categorias
+exportar-categorias: ## Exportar strings por categoria para revisao/
+	$(PYTHON) scripts/categorizar.py --exportar
 
 # ─── Releases ────────────────────────────────────────────────────────────────
 

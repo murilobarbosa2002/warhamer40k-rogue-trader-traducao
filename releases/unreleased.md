@@ -15,23 +15,26 @@
 - `scripts/fix_auto.py` — correções automáticas (MP→PM, AP→PA, cooldown→recarga, artigos duplicados)
 - `scripts/fix_tags.py` — repara automaticamente as 136 tags `{g|..}{/g}` desbalanceadas herdadas da tradução original
 - `scripts/fix_gender.py` — corrige 120 erros de concordância de gênero (`o nave`→`a nave`, etc.)
+- `scripts/check_grammar.py` — verifica gramática PT-BR real com spaCy (POS tagging) + LanguageTool (requer Java)
+- `scripts/check_consistency.py` — detecta strings EN similares com traduções PT inconsistentes via sentence-transformers
+- `scripts/categorizar.py` — agrupa strings por área temática (combate, diálogos, UI, enciclopédia, etc.) para facilitar revisão humana
 - `scripts/relatorio.py` — relatório completo de qualidade com score estimado
 - `scripts/diff_original.py` — comparação EN original vs PT, gera fila de trabalho
-- `scripts/translate_batch.py` — pipeline de tradução com IA (Ollama → Groq → Google Translate) com checkpoint e translation memory
+- `scripts/translate_batch.py` — pipeline de tradução com IA (Helsinki-NLP → Ollama → Groq → Google Translate) com checkpoint e translation memory
 - `scripts/build_from_original.py` — reconstrução limpa do enGB.json a partir do original EN
 - `scripts/release.py` — empacota enGB.json em release versionada com LEIAME.txt
 - `.github/copilot-instructions.md` — instruções permanentes para o Copilot com regras de tradução
 - `.github/agents/` — 3 agentes Copilot especializados (Tradutor WH40K, Revisor de Qualidade, Corretor Automático)
 - `.github/prompts/` — 5 prompts reutilizáveis para tradução, revisão e correção
-- `.github/workflows/ci.yml` — CI que valida JSON, gera relatório em todo PR e atualiza progresso no README automaticamente
+- `.github/workflows/ci.yml` — CI que valida JSON, gera relatório em todo PR, comenta score de qualidade (antes/depois) em PRs e atualiza progresso no README automaticamente
 - `.github/ISSUE_TEMPLATE/` — 3 templates de issue (erro, terminologia, compatibilidade)
 - `.github/pull_request_template.md` — template de PR com checklist
 - `CONTRIBUTING.md` — guia completo para contribuidores
 - `README.md` — documentação pública com instalação, estado, guia de ambiente e badges
 - `CHANGELOG.md` — índice de releases
-- `Makefile` — atalhos para todos os comandos do projeto
-- `requirements.txt` — dependências Python com versões fixas
-- `.env.example` — template de configuração para provedores de IA
+- `Makefile` — atalhos para todos os comandos do projeto (incluindo `check-grammar`, `check-consistency`, `categorias`, `traduzir-helsinki`)
+- `requirements.txt` — dependências Python com versões fixas (inclui transformers, sentence-transformers, spacy, language-tool-python)
+- `.env.example` — template de configuração para provedores de IA (incluindo opção `helsinki`)
 - `.pre-commit-config.yaml` — roda validate.py automaticamente antes de cada commit
 - `translation-memory.json` — memória de tradução para pares EN→PT aprovados por humanos
 

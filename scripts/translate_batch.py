@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-translate_batch.py — Pipeline de tradução com IA (Ollama → Groq → Google Translate)
+translate_batch.py — Pipeline de tradução com IA (Helsinki-NLP → Ollama → Groq → Google Translate)
 
 Traduz as strings não traduzidas do enGB.json usando IA com fallback automático.
 Suporta checkpoint para retomar do ponto onde parou.
 
 Uso:
-    python3 scripts/translate_batch.py                    # traduzir tudo
-    python3 scripts/translate_batch.py --dry-run          # simular sem salvar
-    python3 scripts/translate_batch.py --limite 100       # traduzir apenas 100 strings
-    python3 scripts/translate_batch.py --provider ollama  # forçar provedor
-    python3 scripts/translate_batch.py --reset            # limpar checkpoint e recomeçar
+    python3 scripts/translate_batch.py                      # traduzir tudo
+    python3 scripts/translate_batch.py --dry-run            # simular sem salvar
+    python3 scripts/translate_batch.py --limite 100         # traduzir apenas 100 strings
+    python3 scripts/translate_batch.py --provider helsinki  # modelo local offline EN→PT
+    python3 scripts/translate_batch.py --provider ollama    # forçar Ollama
+    python3 scripts/translate_batch.py --reset              # limpar checkpoint e recomeçar
 """
 
 import argparse
@@ -191,6 +192,46 @@ def translate_google(text: str) -> str:
     return translated
 
 
+# Cache global do pipeline Helsinki para não recarregar a cada chamada
+_helsinki_pipeline = None
+
+
+def translate_helsinki(text: str) -> str:
+    """Traduz usando Helsinki-NLP/opus-mt-tc-big-en-pt (modelo local offline, ~300MB)."""
+    global _helsinki_pipeline
+    try:
+        from transformers import pipeline as hf_pipeline
+    except ImportError:
+        raise RuntimeError("transformers não instalado: pip install transformers sentencepiece")
+
+    if _helsinki_pipeline is None:
+        print("  [Helsinki] Carregando modelo opus-mt-tc-big-en-pt (primeira vez, ~300MB)...")
+        _helsinki_pipeline = hf_pipeline(
+            "translation",
+            model="Helsinki-NLP/opus-mt-tc-big-en-pt",
+            device=-1,  # CPU
+        )
+
+    # Protege as tags substituindo por placeholders
+    tags = TAG_RE.findall(text)
+    protected = text
+    placeholders = {}
+    for i, tag in enumerate(tags):
+        ph = f"XTAG{i}X"
+        placeholders[ph] = tag
+        protected = protected.replace(tag, ph, 1)
+
+    # O modelo tem limite de ~512 tokens; trunca se necessário
+    result = _helsinki_pipeline(protected, max_length=512)
+    translated = result[0]["translation_text"]
+
+    # Restaura as tags
+    for ph, tag in placeholders.items():
+        translated = translated.replace(ph, tag)
+
+    return translated
+
+
 def translate_with_fallback(text: str, provider: str) -> tuple[str, str]:
     """
     Tenta traduzir com o provedor principal, caindo para fallback se falhar.
@@ -199,6 +240,8 @@ def translate_with_fallback(text: str, provider: str) -> tuple[str, str]:
     providers = [provider]
     if provider != "groq" and GROQ_API_KEY:
         providers.append("groq")
+    if provider not in ("helsinki", "deep_translator"):
+        providers.append("helsinki")
     if provider != "deep_translator":
         providers.append("deep_translator")
 
@@ -210,6 +253,8 @@ def translate_with_fallback(text: str, provider: str) -> tuple[str, str]:
                     result = translate_ollama(text)
                 elif prov == "groq":
                     result = translate_groq(text)
+                elif prov == "helsinki":
+                    result = translate_helsinki(text)
                 elif prov == "deep_translator":
                     result = translate_google(text)
                 else:
@@ -450,7 +495,7 @@ def main():
     parser.add_argument(
         "--provider",
         default=PROVIDER,
-        choices=["ollama", "groq", "deep_translator"],
+        choices=["ollama", "groq", "helsinki", "deep_translator"],
         help=f"Provedor de tradução (padrão: {PROVIDER} do .env)",
     )
     parser.add_argument(

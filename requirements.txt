@@ -22,3 +22,23 @@ requests==2.33.1
 
 # Detecção automática de idioma — identifica strings PT que voltaram em EN
 langdetect==1.0.9
+
+# Helsinki-NLP — modelo de tradução local offline EN→PT (~300MB no primeiro uso)
+# Usado pelo translate_batch.py --provider helsinki
+transformers>=4.40.0
+sentencepiece>=0.2.0
+
+# Verificação de consistência semântica entre traduções
+# Modelo multilingual MiniLM (~90MB no primeiro uso)
+sentence-transformers>=3.0.0
+
+# NLP em PT-BR — POS tagging para detecção de erros de gênero/concordância
+# Após instalar: python -m spacy download pt_core_news_sm
+spacy>=3.7.0
+
+# Verificador gramatical real para PT-BR (requer Java 8+ no sistema)
+# Instalar Java: sudo apt-get install default-jre
+language-tool-python>=2.8.0
+
+# PyTorch — backend para transformers e sentence-transformers (CPU)
+torch>=2.0.0
