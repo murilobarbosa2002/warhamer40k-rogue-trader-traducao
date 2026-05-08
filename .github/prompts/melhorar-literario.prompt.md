@@ -1,36 +1,46 @@
 ---
-description: "Melhora a qualidade literária de falas de personagens no enGB.json: remove tom robótico, adiciona personalidade, ajusta registro formal/informal adequado ao personagem WH40K. Use para refinar diálogos depois da tradução inicial."
+description: "Melhora a qualidade literária de falas de personagens no enGB.json: remove tom robótico, adiciona personalidade, ajusta registro adequado ao personagem WH40K. Use para refinar diálogos depois da tradução inicial."
 name: "Melhorar Qualidade Literária"
-agent: "tradutor"
+agent: "Tradutor WH40K"
 tools: [read, edit, search]
 argument-hint: "UUID da string ou nome do personagem/área a melhorar"
 ---
-Abra o arquivo [enGB.json](../enGB.json) e melhore a qualidade literária das strings solicitadas.
+Abra o arquivo [enGB.json](../../enGB.json) e melhore a qualidade literária das strings solicitadas.
 
-## Critérios de melhoria
+## Passo 1 — Identificar o perfil do personagem
 
-**Identifique o perfil do personagem que fala:**
-- **Nobre/Rogue Trader**: voz altiva, vocabulário rico, frases complexas. "Não se atreva a questionar minha autoridade."
-- **Militar/Soldado**: seco, direto, sem floreios. "Ordem cumprida. Próximo objetivo."
-- **Tech-Priest**: jargão mecânico, referências ao Omnissiah, mistura termos técnicos. "O binário sagrado revela a verdade."
-- **Inquisidor**: ameaçador, formal, implacável. "A heresia será extirpada pela raiz."
-- **Cultista/Herege**: fanático, perturbado, fragmentado. "Ele nos chama... todos nós... o Vazio nos abraça."
-- **Comerciante/Mercador**: pragmático, persuasivo, calculista.
-- **Comum/Servo**: submisso, simples, temeroso.
+Antes de qualquer edição, determine quem fala e qual é o seu registro canônico:
 
-## O que NÃO fazer
-- Não mudar o significado original
-- Não remover nem alterar tags
-- Não adicionar informações que não estavam no original
-- Não deixar mais casual do que o original
-- Não traduzir nomes próprios do glossário
+| Perfil | Tom | Exemplo |  
+|--------|-----|---------|  
+| Nobre/Rogue Trader | Altivo, vocabulário rico, formal | "Não se atreva a questionar minha autoridade." |
+| Militar/Soldado | Seco, direto, objetivo | "Ordem cumprida. Próximo objetivo." |
+| Tech-Priest | Jargão mecânico, referências ao Omnissiah | "O binário sagrado revela a verdade." |
+| Inquisidor | Ameaçador, formal, implacável | "A heresia será extirpada pela raiz." |
+| Cultista/Herege | Fanático, perturbado, fragmentado | "Ele nos chama... todos nós..." |
+| Comum/Servo | Simples, direto, sem ornamentação | "Sim, senhor. Como ordenar." |
 
-## Processo
-1. Leia o texto atual.
-2. Identifique: quem fala? qual contexto?
-3. Reescreva mantendo o conteúdo mas melhorando:
-   - Eliminar construções literais ("certifique-se de que" → "garanta que")
-   - Adicionar peso dramático quando apropriado
-   - Ajustar o registro ao perfil do personagem
-   - Corrigir frases que soam como tradução automática
-4. Apresente: texto original → texto melhorado + justificativa
+## Passo 2 — Revisar o texto
+
+Com o perfil definido, reescreva o texto aplicando as regras do perfil, mantendo **obrigatoriamente**:
+- O **significado e todas as informações** do original — não omita nem acrescente fatos
+- Todas as **tags intactas**: `{g|..}`, `{n}..{/n}`, `{uip|..}`, `<b>`, `<i>`, `<br>`, `\n`
+- Os **nomes próprios** do universo WH40K sem tradução (consulte [glossario.json](../../glossario.json))
+
+O que pode e deve ser ajustado:
+- Substituir construções literais de tradução automática ("certifique-se de que" → "garanta que", "você pode ser capaz de" → "você pode")
+- Usar o vocabulário típico do perfil identificado (formal/técnico/seco/fragmentado)
+- Corrigir frases que soam artificiais em PT-BR
+
+> **Nota sobre registro**: personagens de perfil Comum/Servo podem usar linguagem mais simples que outros perfis. O objetivo é adequação ao personagem, não elevar artificialmente o tom de todos.
+
+## Passo 3 — Apresentar resultado
+
+Para cada string alterada:
+```
+UUID: <uuid>
+Perfil: <tipo de personagem>
+Original : <texto antes>
+Melhorado: <texto depois>
+Justificativa: <o que foi mudado e por quê>
+```

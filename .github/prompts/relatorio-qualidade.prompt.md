@@ -2,22 +2,32 @@
 description: "Gera relatório completo de qualidade da tradução: strings em inglês, termos incorretos, erros gramaticais, inconsistências de terminologia. Use para ter uma visão geral do estado atual da tradução."
 name: "Relatório de Qualidade"
 tools: [read, execute, search]
-argument-hint: "Deixe vazio para relatório completo ou informe 'resumido'"
+argument-hint: "Deixe vazio para relatório completo. Informe 'resumido' para ver apenas estatísticas gerais e problemas críticos (strings em inglês + erros de terminologia), sem detalhamento de avisos de qualidade."
 ---
-Execute a análise completa de qualidade do arquivo [enGB.json](../enGB.json) e gere um relatório detalhado.
+Execute a análise de qualidade do arquivo [enGB.json](../../enGB.json).
 
 ```bash
-cd /home/ubuntu/Projetos/warhammer40k-rogue-trader-ptbr
 python3 scripts/relatorio.py
 ```
 
-Se o script não existir, execute a análise manualmente lendo o arquivo e verificando:
+Se o argumento for `resumido`, execute:
+```bash
+python3 scripts/relatorio.py 2>&1 | grep -E '(CRITICO|ERRO|TOTAL|Score|strings)'
+```
 
-1. **Strings não traduzidas** — texto estrutural em inglês
-2. **Termos proibidos** — damage, target, range, cooldown, buff, debuff, skill, MP, AP, HP, NPC, talent, trait, spawn solto
-3. **Inconsistências** — PM vs MP, PA vs AP, Ferimentos vs HP
-4. **Erros gramaticais** — artigos duplicados, preposições duplicadas, concordância de gênero
-5. **Construções literais** — "certifique-se de que", "você pode ser capaz de"
+Se o script não existir, execute a análise manualmente em quatro etapas independentes:
+
+**Etapa 1 — Strings não traduzidas** (CRÍTICO)
+Identifique strings onde o texto está majoritariamente em inglês e não contém palavras estruturais em português.
+
+**Etapa 2 — Termos proibidos** (ERRO)
+Contabilize ocorrências de: `damage`, `target`, `range`, `cooldown`, `buff`, `debuff`, `skill`, `MP`, `AP`, `HP`, `NPC`, `talent`, `trait` fora de tags `{..}`.
+
+**Etapa 3 — Erros gramaticais** (ERRO)
+Procure por: artigos duplicados (`o o`, `um um`, `a a`), preposições duplicadas (`de de`, `para para`) e concordância de gênero errada (`o nave`, `o habilidade`, `a efeito`).
+
+**Etapa 4 — Qualidade** (AVISO)
+Contabilize: `certifique-se de que` (→ garanta que) e `você pode ser capaz de` (→ você pode).
 
 Apresente o relatório no formato:
 

@@ -1,31 +1,36 @@
 ---
 description: "Revisa um lote de strings no enGB.json e gera relatório de qualidade com problemas encontrados e sugestões de correção. Use para auditar a tradução antes de publicar."
 name: "Revisar Lote de Strings"
-agent: "revisor"
+agent: "Revisor de Qualidade"
 tools: [read, search]
-argument-hint: "UUID inicial e quantidade (ex: 'a partir do UUID xxx, 50 strings') ou 'aleatório 30'"
+argument-hint: "UUID inicial e quantidade (ex: 'a partir do UUID xxx, 50 strings') ou 'aleatoriamente 30 strings do arquivo'"
 ---
-Abra o arquivo [enGB.json](../enGB.json) e revise o lote de strings solicitado.
+Abra o arquivo [enGB.json](../../enGB.json) e revise o lote de strings solicitado. Consulte [glossario.json](../../glossario.json) como referência de terminologia.
 
-Para cada string, verifique os seguintes critérios usando o [glossario.json](../glossario.json) como referência:
+Para cada string, execute as verificações em três passagens separadas:
 
-**Checklist de revisão:**
-- [ ] Texto está em PT-BR (não em inglês)
-- [ ] Terminologia canônica do glossário respeitada (PA/PM/Ferimentos/Dano/Alvo/etc.)
-- [ ] Nenhum termo proibido presente (cooldown, damage, target, range, buff, skill, MP, AP, HP)
-- [ ] Todas as tags preservadas intactas
-- [ ] Concordância de gênero correta ("a nave", "o efeito", "a habilidade"...)
-- [ ] Sem palavras duplicadas (de de, o o, um um, que que)
-- [ ] Tom adequado ao tipo de texto (épico para falas, técnico para habilidades, direto para UI)
-- [ ] Sem construções literais robóticas ("certifique-se de que", "você pode ser capaz de")
+## Passagem 1 — Verificações técnicas (estruturais)
+- O campo `"Text"` não foi perdido ou corrompido
+- Todas as tags estão intactas: `{g|..}{/g}`, `{d|..}{/d}`, `{n}..{/n}`, `{uip|..}`, `{unit_stat|..}`, `<b>`, `<i>`, `<br>`, `\n`
+- O texto não está 100% em inglês (string não traduzida)
 
-**Classifique cada problema como:**
-- 🔴 CRÍTICO — quebra o jogo ou torna o texto incompreensível
-- ❌ ERRO — problema claro que deve ser corrigido
-- ⚠️ AVISO — pode ser melhorado mas não é urgente
+## Passagem 2 — Verificações de terminologia
+- Nenhum termo proibido presente em texto PT: `cooldown`, `damage`, `target`, `range`, `buff`, `debuff`, `skill`, `MP`, `AP`, `HP`, `NPC`, `talent`, `trait`
+- Abreviações corretas: `PA` (não AP), `PM` (não MP), `Ferimentos` (não HP ou Vida)
+- Concordância de gênero: `a nave` / `o efeito` / `a habilidade` / `o dano` / `o ataque`
+- Sem duplicações: `de de`, `o o`, `um um`, `que que`, `para para`
+
+## Passagem 3 — Verificações de qualidade
+- Tom adequado ao tipo: épico para falas nobres/militares, técnico para habilidades, direto para UI
+- Sem construções literais de tradução automática: `"certifique-se de que"` → `"garanta que"`, `"você pode ser capaz de"` → `"você pode"`
+
+**Classifique cada problema encontrado como:**
+- 🔴 CRÍTICO — texto ilegível, string em inglês, tags corrompidas
+- ❌ ERRO — termo proibido, duplicação, gênero errado
+- ⚠️ AVISO — tom inadequado, construção literal, pode ser melhorado
 - ✅ OK — string aprovada
 
-**Ao final, gere o relatório:**
+**Relatório final:**
 ```
 RELATÓRIO DE QUALIDADE
 ======================
@@ -37,8 +42,7 @@ Total revisado: X
 
 TOP 5 PROBLEMAS MAIS COMUNS:
 1. ...
-2. ...
 
-STRINGS QUE PRECISAM DE CORREÇÃO URGENTE:
+STRINGS COM CORREÇÃO URGENTE:
 - [UUID] Problema: ...
 ```
