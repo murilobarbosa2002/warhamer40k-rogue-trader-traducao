@@ -2,6 +2,40 @@
 
 Este é um projeto colaborativo de tradução do jogo **Warhammer 40,000: Rogue Trader** para o português brasileiro. O arquivo principal de tradução é `enGB.json`, com ~69.862 strings.
 
+## Arquivos e Scripts do Projeto
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `enGB.json` | Arquivo de tradução PT-BR (mod para o jogo) |
+| `arquivo-original-1.5.0.320.json` | Original EN versão 1.5.0.320 — fonte da verdade |
+| `glossario.json` | Terminologia canônica obrigatória |
+| `scripts/translate_batch.py` | Tradução automática com IA (Ollama → Groq → Google) |
+| `scripts/build_from_original.py` | Reconstrói enGB.json limpo a partir do original |
+| `scripts/diff_original.py` | Gera fila de trabalho com strings não traduzidas |
+| `scripts/fix_auto.py` | Correções automáticas de terminologia (MP→PM, etc.) |
+| `scripts/validate.py` | Valida estrutura JSON e balanço de tags |
+| `scripts/relatorio.py` | Relatório completo de qualidade |
+| `.env` / `.env.example` | Config: provedor de IA, chaves API, tamanho de lote |
+
+### Comandos rápidos
+
+```bash
+# Ver quantas strings ainda precisam de tradução
+python3 scripts/diff_original.py --stats
+
+# Traduzir strings faltando com IA local (Ollama)
+python3 scripts/translate_batch.py
+
+# Traduzir apenas 50 strings para testar
+python3 scripts/translate_batch.py --limite 50
+
+# Correções automáticas de terminologia
+python3 scripts/fix_auto.py
+
+# Validar e gerar relatório
+python3 scripts/validate.py && python3 scripts/relatorio.py
+```
+
 ## Contexto do Universo
 
 Warhammer 40K é um universo de ficção científica **grimdark** (sombrio e brutal). O tom é sério, formal, épico e às vezes litúrgico. Personagens nobres falam com altivez, militares falam com autoridade, cultistas e hereges com fanatismo. Evite tom casual ou moderno.

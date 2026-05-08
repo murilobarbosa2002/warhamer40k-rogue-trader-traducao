@@ -1,0 +1,18 @@
+# Ambiente virtual Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Configuração local com chaves de API
+.env
+
+# Checkpoint de progresso da tradução (estado local)
+.translation_checkpoint.json
+
+# Arquivos temporários e relatórios gerados
+*.tmp
+relatorio_*.txt
+
+# Arquivo original EN (pesado, não faz parte do mod)
+arquivo-original-*.json
