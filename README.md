@@ -16,10 +16,10 @@ Este projeto parte da tradução publicada no Nexus Mods por [fabiobassini](http
 
 **O que este projeto está fazendo:**
 
-- ✅ Atualizar a compatibilidade para a versão **1.5.0.320**
-- ✅ Estruturar um projeto público para receber contribuições da comunidade
-- 🔄 Melhorar progressivamente a qualidade da tradução (terminologia, tom, revisão)
-- 🔄 Manter compatibilidade com futuras atualizações e DLCs
+- Atualizar a compatibilidade para a versão **1.5.0.320**
+- Estruturar um projeto público para receber contribuições da comunidade
+- Melhorar progressivamente a qualidade da tradução (terminologia, tom, revisão)
+- Manter compatibilidade com futuras atualizações e DLCs
 
 **Sobre o mantenedor:** Não sou tradutor, não falo inglês e não tenho experiência com localização de jogos — sou apenas um desenvolvedor brasileiro que queria que outros brasileiros pudessem jogar com tradução. Por isso este projeto é aberto: ele depende da comunidade para melhorar. Se você fala inglês, entende o universo WH40K ou simplesmente jogou o jogo e achou algo estranho na tradução, sua contribuição é muito bem-vinda.
 

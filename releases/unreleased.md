@@ -13,24 +13,37 @@
 - `glossario.json` — terminologia canônica com ~60 termos obrigatórios
 - `scripts/validate.py` — validação estrutural do JSON e balanço de tags
 - `scripts/fix_auto.py` — correções automáticas (MP→PM, AP→PA, cooldown→recarga, artigos duplicados)
+- `scripts/fix_tags.py` — repara automaticamente as 136 tags `{g|..}{/g}` desbalanceadas herdadas da tradução original
+- `scripts/fix_gender.py` — corrige 120 erros de concordância de gênero (`o nave`→`a nave`, etc.)
 - `scripts/relatorio.py` — relatório completo de qualidade com score estimado
 - `scripts/diff_original.py` — comparação EN original vs PT, gera fila de trabalho
-- `scripts/translate_batch.py` — pipeline de tradução com IA (Ollama → Groq → Google Translate) com checkpoint de progresso
+- `scripts/translate_batch.py` — pipeline de tradução com IA (Ollama → Groq → Google Translate) com checkpoint e translation memory
 - `scripts/build_from_original.py` — reconstrução limpa do enGB.json a partir do original EN
+- `scripts/release.py` — empacota enGB.json em release versionada com LEIAME.txt
 - `.github/copilot-instructions.md` — instruções permanentes para o Copilot com regras de tradução
 - `.github/agents/` — 3 agentes Copilot especializados (Tradutor WH40K, Revisor de Qualidade, Corretor Automático)
 - `.github/prompts/` — 5 prompts reutilizáveis para tradução, revisão e correção
-- `.github/workflows/ci.yml` — CI que valida JSON e gera relatório em todo PR
+- `.github/workflows/ci.yml` — CI que valida JSON, gera relatório em todo PR e atualiza progresso no README automaticamente
+- `.github/ISSUE_TEMPLATE/` — 3 templates de issue (erro, terminologia, compatibilidade)
+- `.github/pull_request_template.md` — template de PR com checklist
 - `CONTRIBUTING.md` — guia completo para contribuidores
-- `README.md` — documentação pública com instalação, estado e guia de ambiente
+- `README.md` — documentação pública com instalação, estado, guia de ambiente e badges
+- `CHANGELOG.md` — índice de releases
+- `Makefile` — atalhos para todos os comandos do projeto
+- `requirements.txt` — dependências Python com versões fixas
 - `.env.example` — template de configuração para provedores de IA
+- `.pre-commit-config.yaml` — roda validate.py automaticamente antes de cada commit
+- `translation-memory.json` — memória de tradução para pares EN→PT aprovados por humanos
 
 ### Corrigido
 - 67 strings obsoletas identificadas (existem na tradução mas não no original 1.5.0.320)
 - Estrutura do projeto originalmente sem controle de versão ou padrões
+- Nomes dos agentes Copilot padronizados com os `.agent.md` correspondentes
+- Regras do `copilot-instructions.md` reorganizadas em 4 seções categorizadas
+- Pronomes do personagem jogador explicitados (masculino por padrão, feminino/neutro apenas quando o texto fonte usa explicitamente)
 
 ### Conhecido / Pendente
-- **193 strings** com tags `{g|..}{/g}` desbalanceadas (herança da tradução automática original)
-- **~525 strings** ainda em inglês (não traduzidas)
-- **~112 casos** de concordância de gênero incorreta (`o nave`, `uma alvo`)
-- **67 strings** obsoletas ainda presentes no enGB.json (serão removidas em `build_from_original`)
+- **193 strings** com tags `{g|..}{/g}` desbalanceadas (136 corrigíveis por `fix_tags.py`, 57 requerem revisão)
+- **~525 strings** ainda em inglês (não traduzidas, resolvíveis com `translate_batch.py`)
+- **~120 casos** de concordância de gênero incorreta (corrigíveis com `fix_gender.py`)
+- **67 strings** obsoletas ainda presentes no enGB.json (removíveis com `build_from_original.py`)
