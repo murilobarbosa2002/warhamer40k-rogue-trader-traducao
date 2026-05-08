@@ -66,11 +66,25 @@
 - `glossario.json`: expandido de ~60 para 150+ termos — adicionados personagens do Rogue Trader, locais, subfações, armas, equipamentos, títulos imperiais
 - `copilot-instructions.md`: seção de termos não-traduzíveis expandida de uma linha para 6 categorias com 100+ nomes próprios
 - Estrutura do projeto originalmente sem controle de versão ou padrões
+- `split.py`: `detect_status()` corrigido — 1.125 strings marcadas como `pending` incorretamente (eram nomes próprios intraduzíveis como `Rogue Trader`, `Bolter`, `Melta`, código binário do Pasqal, créditos de empresas); agora marcadas como `approved`
+- `{g|Encyclopedia:Skills}skills{/g}` corrigido para `perícias` (único termo EN real encontrado em texto visível)
+- `relatorio.py`: detectava 23 falsos positivos em "termos EN no PT" — a maioria eram: `skill` dentro de tags de enciclopédia (identificadores intraduzíveis), `damage` na EULA em inglês (intencional), `a a` em expressões PT corretas ("de A a Z", "levando-a a se arrepender")
+- Revisão por IA (diálogos, 100 strings): detectou e corrigiu `demônios`→`Daemons`, `voz`→`Vox`, `dobra`→`Warp`, `segurança`→`executor` (no contexto correto), negação em fala de personagem Eldar
+
+**Revisão por IA (`scripts/review_ai.py`)**
+- Novo script de revisão de qualidade por IA (Groq / Ollama / Gemini)
+  - Processa uma string por vez com prompt especializado WH40K (terminologia, tom grimdark, preservação de tags)
+  - Modelo padrão: `llama-3.3-70b-versatile` (Groq) — segue instruções com precisão
+  - Checkpoint automático a cada 20 strings — retomável sem perder progresso
+  - `--aplicar <relatório>` aplica correções validadas no `enGB.json` e `src/strings/`
+  - `--dry-run` mostra correções sem alterar arquivos
+  - Retry automático com espera exata indicada pelo rate limit do Groq
+  - Suporte a Gemini 2.0 Flash como alternativa
 
 ### Estado atual
-- Score de qualidade: **9.7/10**
-- Strings traduzidas: **~99.2%** (após tradução das pendentes)
+- Score de qualidade: **9.9/10**
+- Strings traduzidas: **100%** (69.795/69.795 — nomes próprios corretos incluídos)
+- `src/strings/`: 11.454 `approved` + 58.341 `machine` + 0 `pending`
 - Tags desbalanceadas: **0**
 - Erros de gênero: **0**
-- Termos em inglês no PT: **30** (skill, target, damage — em processo de correção)
-- Duplicações gramaticais: **11** (artigo duplicado "a a")
+- Revisão por IA em andamento: 100/474 diálogos revisados, 8 correções aplicadas

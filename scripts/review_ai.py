@@ -204,7 +204,7 @@ def _call_groq_single(prompt: str) -> str:
         raise RuntimeError("GROQ_API_KEY não configurado no .env")
     model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
     client = Groq(api_key=api_key)
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             resp = client.chat.completions.create(
                 model=model,
@@ -214,8 +214,19 @@ def _call_groq_single(prompt: str) -> str:
             )
             return resp.choices[0].message.content.strip()
         except Exception as e:
-            if "429" in str(e) and attempt < 2:
-                time.sleep(10 * (attempt + 1))
+            msg = str(e)
+            if "429" in msg:
+                # Extrair tempo real de espera da mensagem de erro
+                wait_m = re.search(r"try again in (\d+)m([\d.]+)s", msg)
+                wait_s = re.search(r"try again in ([\d.]+)s", msg)
+                if wait_m:
+                    wait = int(wait_m.group(1)) * 60 + float(wait_m.group(2)) + 5
+                elif wait_s:
+                    wait = float(wait_s.group(1)) + 5
+                else:
+                    wait = 60 * (attempt + 1)
+                print(f"\n  [rate limit] aguardando {wait:.0f}s antes de tentar novamente...")
+                time.sleep(wait)
             else:
                 raise
 
