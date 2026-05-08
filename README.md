@@ -6,6 +6,21 @@ Mod de tradução não oficial para o português brasileiro do jogo **Warhammer 
 
 ---
 
+## Origem e objetivo do projeto
+
+Este projeto parte da tradução publicada no Nexus Mods por [fabiobassini](https://www.nexusmods.com/warhammer40kroguetrader/mods/5), que cobria a versão **1.4.1.229** do jogo e foi gerada **100% automaticamente com Google Translate, sem revisão humana**. O resultado é funcional, mas com qualidade inconsistente — termos de jogo em inglês no meio do texto, tom robótico em falas de personagens, erros de concordância de gênero e terminologia fora do padrão WH40K.
+
+**O que este projeto está fazendo:**
+
+- ✅ Atualizar a compatibilidade para a versão **1.5.0.320**
+- ✅ Estruturar um projeto público para receber contribuições da comunidade
+- 🔄 Melhorar progressivamente a qualidade da tradução (terminologia, tom, revisão)
+- 🔄 Manter compatibilidade com futuras atualizações e DLCs
+
+**Aviso:** Eu não sou tradutor profissional. Este projeto é colaborativo — quanto mais pessoas contribuírem, melhor ficará a tradução para todos. Se você encontrou um erro, [abra uma Issue](https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao/issues) ou envie um Pull Request.
+
+---
+
 ## Instalação do mod
 
 1. Baixe o arquivo `enGB.json` da [última release](https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao/releases)
