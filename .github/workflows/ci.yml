@@ -35,6 +35,72 @@ jobs:
       - name: Verificar glossario.json válido
         run: python3 -c "import json; json.load(open('glossario.json')); print('Glossario valido')"
 
+  atualizar-stats:
+    name: Atualizar estatísticas no README
+    runs-on: ubuntu-latest
+    needs: validar-json
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Calcular progresso e atualizar badge no README
+        run: |
+          python3 - << 'PYEOF'
+          import json, re
+
+          with open('enGB.json', encoding='utf-8') as f:
+              trad = json.load(f)
+
+          TAG_RE = re.compile(r'\{[^}]+\}|<[^>]+>')
+          total = len(trad['strings'])
+          traduzidas = 0
+          en_markers = re.compile(r'\b(the|and|is|are|was|were|will|have|has|this|that|with|from|they)\b', re.IGNORECASE)
+          pt_markers = re.compile(r'\b(de|da|do|em|para|um|uma|com|que|não|são|você)\b', re.IGNORECASE)
+
+          for v in trad['strings'].values():
+              clean = TAG_RE.sub('', v['Text']).strip()
+              if len(clean) <= 5:
+                  traduzidas += 1
+              elif not (en_markers.search(clean) and not pt_markers.search(clean)):
+                  traduzidas += 1
+
+          pct = round(traduzidas / total * 100, 1)
+          print(f"Progresso: {traduzidas:,}/{total:,} ({pct}%)")
+
+          # Atualizar linha de status no README
+          readme = open('README.md', encoding='utf-8').read()
+          novo = f'> **Status:** {pct}% traduzido — {traduzidas:,} de {total:,} strings.'
+          readme_atualizado = re.sub(
+              r'> \*\*Status:\*\* .*? strings\.',
+              novo,
+              readme
+          )
+          if readme_atualizado != readme:
+              open('README.md', 'w', encoding='utf-8').write(readme_atualizado)
+              print("README.md atualizado com novo progresso.")
+          else:
+              print("README.md sem alterações.")
+          PYEOF
+
+      - name: Commit stats atualizadas (se mudou)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet README.md || (
+            git add README.md &&
+            git commit -m "chore(ci): atualiza progresso de tradução no README [skip ci]" &&
+            git push
+          )
+
   relatorio-qualidade:
     name: Relatório de qualidade
     runs-on: ubuntu-latest

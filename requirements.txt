@@ -19,3 +19,6 @@ deep-translator==1.11.4
 
 # HTTP requests (usado internamente e pelo deep-translator)
 requests==2.33.1
+
+# Detecção automática de idioma — identifica strings PT que voltaram em EN
+langdetect==1.0.9

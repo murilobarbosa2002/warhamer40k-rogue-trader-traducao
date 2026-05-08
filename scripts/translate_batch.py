@@ -32,6 +32,7 @@ ROOT = Path(__file__).parent.parent
 ENDB_PATH = ROOT / "enGB.json"
 CHECKPOINT_PATH = ROOT / Path(os.getenv("CHECKPOINT_FILE", ".translation_checkpoint.json"))
 GLOSSARIO_PATH = ROOT / "glossario.json"
+TRANSLATION_MEMORY_PATH = ROOT / "translation-memory.json"
 
 # ─── Configurações do .env ──────────────────────────────────────────────────
 PROVIDER = os.getenv("TRANSLATION_PROVIDER", "ollama")
@@ -274,6 +275,15 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
     checkpoint = load_checkpoint()
     ja_traduzidas = set(checkpoint["traduzidas"].keys())
 
+    # Carregar translation memory (traduções revisadas por humanos)
+    tm = {}
+    if TRANSLATION_MEMORY_PATH.exists():
+        with open(TRANSLATION_MEMORY_PATH, encoding="utf-8") as f:
+            tm_data = json.load(f)
+        tm = tm_data.get("pairs", {})
+        if tm:
+            print(f"Translation memory: {len(tm):,} pares aprovados carregados")
+
     # Identificar strings não traduzidas
     TAG_ONLY = re.compile(r"^[\s\{<\[%\-\d\.\*,/\|]+$")
     PT_RE = re.compile(
@@ -346,7 +356,14 @@ def run(provider: str, limite: int, dry_run: bool, reset: bool, quiet: bool) -> 
                 print(f"  [{success+failures+1}/{len(fila)}] {key[:8]}...", end="\r")
 
             try:
-                translated, used_provider = translate_with_fallback(en_text, provider)
+                # 1. Verificar translation memory primeiro
+                if key in tm:
+                    translated = tm[key]["pt"]
+                    used_provider = "translation-memory"
+                elif key in ja_traduzidas:
+                    continue
+                else:
+                    translated, used_provider = translate_with_fallback(en_text, provider)
                 translated = apply_glossary_fixes(translated)
 
                 # Verificar integridade das tags

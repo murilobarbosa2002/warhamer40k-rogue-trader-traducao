@@ -1,0 +1,8 @@
+{
+  "_meta": {
+    "descricao": "Memória de tradução — pares EN→PT verificados e aprovados para o projeto WH40K Rogue Trader PT-BR",
+    "uso": "Strings neste arquivo têm prioridade sobre tradução automática. São pares revisados por humanos.",
+    "formato": "UUID: { 'en': texto original, 'pt': tradução aprovada, 'revisor': quem aprovou, 'data': data }"
+  },
+  "pairs": {}
+}

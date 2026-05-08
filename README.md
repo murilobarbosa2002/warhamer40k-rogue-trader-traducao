@@ -1,5 +1,9 @@
 # Warhammer 40,000: Rogue Trader — Tradução PT-BR
 
+[![Validação CI](https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao/actions/workflows/ci.yml/badge.svg)](https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao/actions/workflows/ci.yml)
+[![Contribuições bem-vindas](https://img.shields.io/badge/contribuições-bem--vindas-brightgreen)](CONTRIBUTING.md)
+[![Versão do jogo](https://img.shields.io/badge/jogo-1.5.0.320-blue)](https://store.steampowered.com/app/2186680/Warhammer_40000_Rogue_Trader/)
+
 Mod de tradução não oficial para o português brasileiro do jogo **Warhammer 40,000: Rogue Trader** (Owlcat Games).
 
 > **Status:** 92,1% traduzido — 64.289 de 69.795 strings. ~510 strings ainda em inglês.
