@@ -17,7 +17,7 @@ Este projeto parte da tradução publicada no Nexus Mods por [fabiobassini](http
 - 🔄 Melhorar progressivamente a qualidade da tradução (terminologia, tom, revisão)
 - 🔄 Manter compatibilidade com futuras atualizações e DLCs
 
-**Aviso:** Eu não sou tradutor profissional. Este projeto é colaborativo — quanto mais pessoas contribuírem, melhor ficará a tradução para todos. Se você encontrou um erro, [abra uma Issue](https://github.com/murilobarbosa2002/warhamer40k-rogue-trader-traducao/issues) ou envie um Pull Request.
+**Sobre o mantenedor:** Não sou tradutor, não falo inglês e não tenho experiência com localização de jogos — sou apenas um desenvolvedor brasileiro que queria que outros brasileiros pudessem jogar com tradução. Por isso este projeto é aberto: ele depende da comunidade para melhorar. Se você fala inglês, entende o universo WH40K ou simplesmente jogou o jogo e achou algo estranho na tradução, sua contribuição é muito bem-vinda.
 
 ---
 
