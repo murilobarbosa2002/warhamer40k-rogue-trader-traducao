@@ -131,8 +131,8 @@
   },
   "295fa158-857a-4d1a-9395-5b29d8fe3232": {
     "en": "The wearer gains +20 to all Lore {g|Encyclopedia:Skills}skills{/g}.",
-    "pt": "O usuário ganha +20 em todas as habilidades de Lore {g|Encyclopedia:Skills}skills{/g}.",
-    "status": "machine"
+    "pt": "O usuário ganha +20 em todas as habilidades de Lore {g|Encyclopedia:Skills}perícias{/g}.",
+    "status": "approved"
   },
   "ebb76db6-2671-4d90-90ab-fa3c13a20cab": {
     "en": "The wearer gains +5 {g|Encyclopedia:WarhammerFellowship}Fellowship{/g} and +10 {g|Encyclopedia:SkillCommerce}Commerce{/g}.\nIf the wearer has {g|Encyclopedia:SoulMarkFaith}Dogmatic{/g} — Adherent or above, their {g|Encyclopedia:SkillLoreImperium}Lore (Imperium){/g} will depend on Fellowship instead of {g|Encyclopedia:WarhammerIntelligence}Intelligence{/g}, and they gain +10 Lore (Imperium).",

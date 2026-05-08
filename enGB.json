@@ -13102,7 +13102,7 @@
     },
     "295fa158-857a-4d1a-9395-5b29d8fe3232": {
       "Offset": 0,
-      "Text": "O usuário ganha +20 em todas as habilidades de Lore {g|Encyclopedia:Skills}skills{/g}."
+      "Text": "O usuário ganha +20 em todas as habilidades de Lore {g|Encyclopedia:Skills}perícias{/g}."
     },
     "ffbb2a8a-93f5-44cb-bfc3-0ad79abcde77": {
       "Offset": 0,
@@ -49726,7 +49726,7 @@
     },
     "3c46c050-a521-48b4-9b1b-c1101b549d48": {
       "Offset": 0,
-      "Text": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de armas laser ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\""
+      "Text": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de Lasgun ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\""
     },
     "001e8ba0-8a0c-44c2-8dcb-fd33460d8310": {
       "Offset": 0,
@@ -56722,7 +56722,7 @@
     },
     "823b625a-03d3-4216-ab35-a1fd910485b3": {
       "Offset": 0,
-      "Text": "Uma prece ansiosa ao Imperador é sussurrada na voz. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele , vivo e bem, e o vazio parece completamente vazio novamente."
+      "Text": "Uma prece ansiosa ao Imperador é sussurrada sobre o Vox. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele, vivo e bem, e a nave do vazio parece completamente vazia novamente."
     },
     "54b81eb0-b458-4f27-857a-d20b84b6ab18": {
       "Offset": 0,
@@ -70134,7 +70134,7 @@
     },
     "94232bc4-4ac9-4f8d-90f1-63450dd501d5": {
       "Offset": 0,
-      "Text": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Falaremos sobre o destino de meus parentes. não mais. Tudo o que era para ser dito foi dito.\""
+      "Text": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Não falaremos mais sobre o destino da minha linhagem. Tudo o que era para ser dito foi dito.\""
     },
     "c09a7956-5645-49d1-b51b-2e34080f3143": {
       "Offset": 0,
@@ -93866,7 +93866,7 @@
     },
     "a03f786b-e5a0-4d89-ae8d-30efad61838a": {
       "Offset": 0,
-      "Text": "\"Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um segurança.\""
+      "Text": "Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um executor."
     },
     "65b86757-addb-45af-84d4-72cff990fc97": {
       "Offset": 0,
@@ -95506,7 +95506,7 @@
     },
     "6113db7b-5812-4bea-a74b-9ae36c4f628b": {
       "Offset": 0,
-      "Text": "\"Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com demônios? Diga um para mim.\""
+      "Text": "Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com Daemons? Diga um para mim."
     },
     "65a8359a-d581-47bf-9aa3-b68d2fe700c2": {
       "Offset": 0,
@@ -96054,7 +96054,7 @@
     },
     "f3cf55e1-6e21-4ada-ba3d-53c191176830": {
       "Offset": 0,
-      "Text": "Ordenou ao cirurgião Majoris que encontrasse voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença."
+      "Text": "Ordenou ao Chirurgeon Majoris a encontrar voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença."
     },
     "7a1a1495-462b-4a01-8436-492ddb8bb547": {
       "Offset": 0,
@@ -96062,7 +96062,7 @@
     },
     "02e68501-6e89-4589-b550-0a2445c127b0": {
       "Offset": 0,
-      "Text": "Ordenou ao cirurgião Majoris que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença."
+      "Text": "Ordenou ao cirurgião-chefe que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença."
     },
     "2935b26d-c467-4dff-a807-3ec326a17307": {
       "Offset": 0,
@@ -98966,7 +98966,7 @@
     },
     "0deba675-5b40-4573-88eb-420f77eefd60": {
       "Offset": 0,
-      "Text": "\"Descobri um mineral com atividade de dobra em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo.\""
+      "Text": "Descobri um mineral com atividade de Warp em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo."
     },
     "32860745-10dc-4776-9987-b850ccd04015": {
       "Offset": 0,

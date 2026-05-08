@@ -1,0 +1,724 @@
+{
+  "categoria": "dialogo",
+  "provider": "groq",
+  "total_revisados": 100,
+  "total_problemas": 8,
+  "resultados": [
+    {
+      "uuid": "32d96289-b05a-4cac-a445-317a8a85a7b1",
+      "categoria": "dialogo",
+      "en_original": "Assistant Voice Director, Recording Engineer, Dialogue Editing",
+      "pt_atual": "Assistente de Diretor de Voz, Engenheiro de Gravação, Edição de Diálogos",
+      "ok": true
+    },
+    {
+      "uuid": "857b269a-19c4-48f8-ac4c-031d8febf29e",
+      "categoria": "dialogo",
+      "en_original": "Recording Engineer, Dialogue Editing",
+      "pt_atual": "Engenheiro de gravação, edição de diálogo",
+      "ok": true
+    },
+    {
+      "uuid": "61b2b363-431e-41ef-a229-4a9f20c09745",
+      "categoria": "dialogo",
+      "en_original": "Death Cultist Male Dialogue",
+      "pt_atual": "Death Cultist Diálogo Masculino",
+      "ok": true
+    },
+    {
+      "uuid": "431cbae6-5f1f-48b0-874f-1bd709d8a2d9",
+      "categoria": "dialogo",
+      "en_original": "Sometimes your character will have to make tough decisions based on their values, interests, and goals. Such decisions affect their <b>convictions</b>. This can develop in three directions: <b>Dogmatic</b>, <b>Iconoclast</b>, <b>Heretical</b>. Each includes five ranks — the higher the rank, the more zealously the character follows their convictions, and the more noticeably the world around them reacts to their actions and decisions.\nPromotion through the ranks of each of the three directions opens up access to new dialogue lines, events, unique {g|Encyclopedia:Ability}abilities{/g}, and also changes the attitude of others toward your character. Also, some items can only be equipped by characters with certain convictions.\nWhen one of the conviction branches reaches rank III: <b>Votary</b>, it becomes the character's main focus. When that happens, the other two conviction branches cannot be raised above rank II: <b>Adherent</b>.\nYour character's allies have convictions of their own, as well.",
+      "pt_atual": "Às vezes, seu personagem terá que tomar decisões difíceis com base em seus valores, interesses e objetivos. Tais decisões afetam suas <b>convicções</b>. Isso pode se desenvolver em três direções: <b>Dogmática</b> b>, <b>Iconoclasta</b>, <b>Herético</b>. Cada uma inclui cinco graduações — quanto mais alta a classificação, mais zelosamente o personagem segue suas convicções e mais visivelmente o mundo ao seu redor reage às suas ações e decisões.\nA promoção nas classificações de cada uma das três direções abre acesso a novas linhas de diálogo, eventos, {g|Encyclopedia:Ability}habilidades{/g} exclusivas e também muda a atitude dos outros em relação ao seu personagem. . Além disso, alguns itens só podem ser equipados por personagens com determinadas convicções.\nQuando um dos ramos de convicção atinge o nível III: <b>Votário</b>, ele se torna o foco principal do personagem. Quando isso acontece, os outros dois ramos de convicção os ramos não podem ser elevados acima do nível II: <b>Aderente</b>.\nOs aliados do seu personagem também têm convicções próprias.",
+      "ok": true
+    },
+    {
+      "uuid": "f4b197cb-7f3b-4cf9-b00f-b34a3afca316",
+      "categoria": "dialogo",
+      "en_original": "One of your {g|SoulmarkTypesGlossary}conviction{/g} branches has reached rank II, <b>Adherent</b>.\nOnce it reaches rank III, <b>Votary</b>, it becomes the character's main conviction.\nAfter that, you will still be able to choose dialogue options referring to other conviction branches, but those branches cannot be raised above rank II, <b>Adherent</b>.",
+      "pt_atual": "Um dos seus ramos de {g|SoulmarkTypesGlossary}convicção{/g} atingiu o nível II, <b>Aderente</b>.\nQuando atingir o nível III, <b>Devoto</b>, ele se tornará a convicção principal do personagem.\nDepois disso, você ainda poderá escolher opções de diálogo referentes a outros ramos de convicção, mas esses ramos não poderão ser elevados acima do nível II, <b>Aderente</b>.",
+      "ok": true
+    },
+    {
+      "uuid": "69e1d5bc-2c19-48e2-b2cf-a4f1d4208664",
+      "categoria": "dialogo",
+      "en_original": "You ordered that the defective servitors be assigned to their former duties.",
+      "pt_atual": "Você ordenou que os servidores defeituosos fossem designados para suas antigas funções.",
+      "ok": true
+    },
+    {
+      "uuid": "f94bbfef-3ed2-4686-a0d1-796decc35996",
+      "categoria": "dialogo",
+      "en_original": "You ordered that the defective servitors be destroyed.",
+      "pt_atual": "Você ordenou que os servidores defeituosos fossem destruídos.",
+      "ok": true
+    },
+    {
+      "uuid": "fb107fa8-f05d-4896-9cf7-77976b2c4ab1",
+      "categoria": "dialogo",
+      "en_original": "You ordered that corrupted grain be shipped from Janus to Footfall.",
+      "pt_atual": "Você ordenou que grãos corrompidos fossem enviados de Janus para Footfall.",
+      "ok": true
+    },
+    {
+      "uuid": "0b421c91-b4c5-482b-ab91-3504df987889",
+      "categoria": "dialogo",
+      "en_original": "You ordered that the Astropaths be provided with good food and balms.",
+      "pt_atual": "Você ordenou que os Astropatas recebessem boa comida e bálsamos.",
+      "ok": true
+    },
+    {
+      "uuid": "34f2811e-11d6-4ee2-b222-89f50493b141",
+      "categoria": "dialogo",
+      "en_original": "You ordered that both the executioner and the fortress commander be burnt.",
+      "pt_atual": "Você ordenou que tanto o carrasco quanto o comandante da fortaleza fossem queimados.",
+      "ok": true
+    },
+    {
+      "uuid": "605be129-dc67-4471-8618-f686b27385c4",
+      "categoria": "dialogo",
+      "en_original": "You ordered the execution of the one responsible for the disturbance at the trial.",
+      "pt_atual": "Você ordenou a execução do responsável pela perturbação no julgamento.",
+      "ok": true
+    },
+    {
+      "uuid": "03e968bf-d95d-45a1-a7a5-8d928e4941c5",
+      "categoria": "dialogo",
+      "en_original": "Highlighted words can help you better understand the world of the game or its mechanics. Press {console_bind|Func02} to switch to description view mode. You can switch between words using {console_bind|LeftStick}/{console_bind|DPadFull}.\nWords are highlighted when they first appear in a text — use {console_bind|RightStickY} in the dialogue box to see the desired highlighted term again.",
+      "pt_atual": "As palavras destacadas podem ajudá-lo a entender melhor o mundo do jogo ou sua mecânica. Pressione {console_bind|Func02} para alternar para o modo de visualização da descrição. Você pode alternar entre as palavras usando {console_bind|LeftStick}/{console_bind|DPadFull}.\nAs palavras são destacadas quando aparecem pela primeira vez em um texto — use {console_bind|RightStickY} na caixa de diálogo para ver o termo destacado desejado novamente.",
+      "ok": true
+    },
+    {
+      "uuid": "47f79e28-d06a-4834-8b32-8d8252a6dd50",
+      "categoria": "dialogo",
+      "en_original": "Uncountable worlds are said to labour beneath the Imperium's yoke. The Koronus Expanse, where the realm of the von Valancius dynasty is located, is but a sliver of Humanity's dominion.",
+      "pt_atual": "Dizem que incontáveis mundos trabalham sob o jugo do Império. A Vastidão Koronus, onde está localizado o reino da dinastia von Valancius, é apenas uma lasca do domínio da Humanidade.",
+      "ok": true
+    },
+    {
+      "uuid": "cd8d0195-d9e2-4db1-9863-b0c50d30a0e8",
+      "categoria": "dialogo",
+      "en_original": "The short life of the entity named Nomos ended on Epitaph. The young being was devoured by its maker, perishing in the very whirlwind of C'tan Shard energies that once spawned it, devoured by their own creator. It was not in the nature of the star vampires to willingly give or gift. Predatory consumption was their primary instinct, and thus Nomos were ordered to cease existing and merge in a stream of obedient energy with the mighty body of the ancient deity.",
+      "pt_atual": "A curta vida da entidade chamada Nomos terminou em Epitaph. O jovem ser foi devorado por seu criador, perecendo no próprio redemoinho de energias C'tan Shard que uma vez o gerou, devorado por seu próprio criador. Não era da natureza dos vampiros estelares dar ou presentear voluntariamente. O consumo predatório era seu instinto primário, e assim Nomos foi ordenado a deixar de existir e se fundir em um fluxo de energia obediente com o corpo poderoso da divindade ancestral.",
+      "ok": true
+    },
+    {
+      "uuid": "3deaeb6d-b57c-4676-abbd-4e9ed82ec255",
+      "categoria": "dialogo",
+      "en_original": "After witnessing the deeds of Marshal Anthar, Vizsier Kibellah asked the cards about his fate. The very next day, a spinner was assigned to him, tasked solely with protecting Solomorne from any and all assassination attempts. These were not long in coming, and the spinner's blade soon tasted the blood of heretics. For his part, the Marshal, after accidentally discovering that he had an invisible protector, had the spinner arrested and executed for multiple counts of murder.",
+      "pt_atual": "Após testemunhar os feitos do Marechal Anthar, o Vizsier Kibellah perguntou às cartas sobre seu destino. No dia seguinte, um fiandeiro foi designado a ele, com a única tarefa de proteger Solomorne de toda e qualquer tentativa de assassinato. Estas não tardaram a acontecer, e a lâmina do fiandeiro logo provou o gosto do sangue dos hereges. Por sua vez, o Marechal, após descobrir acidentalmente que tinha um protetor invisível, mandou prender e executar o fiandeiro por múltiplas acusações de assassinato.",
+      "ok": true
+    },
+    {
+      "uuid": "9b891969-6874-4a47-b0d5-f190f0aba179",
+      "categoria": "dialogo",
+      "en_original": "Leaving the Necron systems behind, the Star God vengefully obliterated every Tomb World of the ancient xenos race. The old hatred of the C'tan, betrayed by their deathless servants, whispered inside him.",
+      "pt_atual": "Deixando os sistemas Necron para trás, o Deus Estelar vingativamente obliterou cada Mundo Túmulo da antiga raça xenos. O velho ódio dos C'tan, traído por seus servos imortais, sussurrava dentro dele.",
+      "ok": true
+    },
+    {
+      "uuid": "b889346c-447b-44a8-ae76-1d430be0daf2",
+      "categoria": "dialogo",
+      "en_original": "Abelard's shining memory was blighted only by rumours of a creeping madness in the twilight of his life. Many said they had seen the esteemed Seneschal talking to someone unseen, in a voice filled with unusual tenderness and sorrow.",
+      "pt_atual": "A brilhante memória de Abelardo foi ofuscada apenas por rumores de uma loucura rastejante no crepúsculo de sua vida. Muitos disseram que tinham visto o estimado Senescal falando com alguém invisível, em uma voz cheia de ternura e tristeza incomuns.",
+      "ok": true
+    },
+    {
+      "uuid": "06e11b86-69b4-4f98-8c98-2aac1ca3d25d",
+      "categoria": "dialogo",
+      "en_original": "Rumours said that Argenta was lured there under false pretences by her former allies. It may have even been {name} von Valancius {mf|him|her}self, unwilling to kill her off or tolerate her raging desire to cleanse the Expanse of heresy. No one knows the truth, but many gave a sigh of relief after her disappearance.",
+      "pt_atual": "Rumores diziam que Argenta foi atraída para lá sob falsos pretextos por seus antigos aliados. Pode até ter sido {name} von Valancius {mf|ele|ela} mesmo, não querendo matá-la ou tolerar seu desejo furioso de limpar a Expansão da heresia. Ninguém sabe a verdade, mas muitos deram um suspiro de alívio após seu desaparecimento.",
+      "ok": true
+    },
+    {
+      "uuid": "12b08599-53f0-415e-85ce-059f198121fc",
+      "categoria": "dialogo",
+      "en_original": "Converted into a comet shrine, Foulstone's moon spread the word of Saint Cognatius throughout the Expanse. Protecting worlds from attacks by the enemies of Humanity, its servants asked for neither money nor power, but only the relics left by their blessed patron. The wise handed them over with reverence, while the haughty learned how heavy the Hammer of Foulstone was.",
+      "pt_atual": "Convertida em um santuário de cometas, a lua de Foulstone espalhou a palavra de São Cognatius por toda a Expansão. Protegendo os mundos dos ataques dos inimigos da Humanidade, seus servos não pediram nem dinheiro nem poder, mas apenas as relíquias deixadas por seus abençoados patrono. Os sábios os entregaram com reverência, enquanto os arrogantes aprenderam o quão pesado era o Martelo de Foulstone.",
+      "ok": true
+    },
+    {
+      "uuid": "99836212-297f-4384-9d7b-125ce181cff8",
+      "categoria": "dialogo",
+      "en_original": "It is said that the xenos Marazhai travelled to these dark sectors to hunt down and exterminate the beast more than once, but each time he limped back in a sorry state. He was proud of his experience, however, and believed that one day he would succeed.",
+      "pt_atual": "Diz-se que o xenos Marazhai viajou para esses setores sombrios para caçar e exterminar a fera mais de uma vez, mas todas as vezes ele voltou mancando em um estado lamentável. Ele estava orgulhoso de sua experiência, no entanto, e acreditava que um dia ele teria sucesso.",
+      "ok": true
+    },
+    {
+      "uuid": "c40df208-3b55-46ba-9abf-bd02ce162a29",
+      "categoria": "dialogo",
+      "en_original": "\"I assure you that, even in light of recent events, our stock has suffered no losses.\" {n}He scowls.{/n} \"Some brawny lads came by to enforce a new ban — said we were not to sell anything more dangerous than a peashooter to ordinary customers. It's their way of fighting piracy, you see. But surely this ban doesn't apply to a client as estimable as yourself, now, does it?\" {n}He gives you a conspiratorial wink.{/n}",
+      "pt_atual": "\"Garanto que, mesmo à luz dos acontecimentos recentes, nossas ações não sofreram perdas.\" {n}Ele faz uma careta.{/n} \"Alguns rapazes musculosos vieram para impor uma nova proibição. – disse que não deveríamos vender nada mais perigoso do que um atirador de ervilha para clientes comuns. É a maneira deles de combater a pirataria, sabe. Mas certamente essa proibição não se aplica a um cliente tão estimável quanto você, não é?\" {n}Ele lhe dá uma piscadela conspiratória.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "3c46c050-a521-48b4-9b1b-c1101b549d48",
+      "categoria": "dialogo",
+      "en_original": "{n}Ryzza gives you a calculating look and says tentatively,{/n} \"I take it we're talking about something more substantial than a shipment of lasguns or a hold packed with obscura? I can't offer you anything at the moment, but I'll remember that you asked. I'll let my associates know.\"",
+      "pt_atual": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de armas laser ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\"",
+      "ok": false,
+      "problema": "Termo \"armas laser\" em vez de \"Lasgun\"",
+      "corrigido": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de Lasgun ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\""
+    },
+    {
+      "uuid": "785af4d1-7327-42b7-bbe8-244ac2229fe4",
+      "categoria": "dialogo",
+      "en_original": "Logistics officers lead by Master Helmsman Ravor are ordered to plot a course for the rescue shuttle from the dynasty's flagship to the xenoship and back.",
+      "pt_atual": "Oficiais de logística liderados pelo Mestre Timoneiro Ravor recebem ordens de traçar um curso para a nave de resgate da nave capitânia da Dinastia até o xenoship e vice-versa.",
+      "ok": true
+    },
+    {
+      "uuid": "b675cc2a-6727-4a1f-96c6-3cddb8436c57",
+      "categoria": "dialogo",
+      "en_original": "Having learned of the fate that befell the servants of House von Valancius in the camp, Idira Tlass retreats into herself for a few minutes, as if listening to someone unseen. According to her, one of the officers considered the expedition heretical and wanted to betray Lady Theodora. Unable to single out the traitor and wanting to keep her research secret, she ordered the whole squad to be eliminated.",
+      "pt_atual": "Ao saber do destino que se abateu sobre os servos da Casa von Valancius no acampamento, Idira Tlass se retira por alguns minutos, como se estivesse ouvindo alguém invisível. Segundo ela, um dos oficiais considerou a expedição herética e queria trair Senhora Theodora. Incapaz de identificar o traidor e querendo manter sua pesquisa em segredo, ela ordenou que todo o esquadrão fosse eliminado.",
+      "ok": true
+    },
+    {
+      "uuid": "823b625a-03d3-4216-ab35-a1fd910485b3",
+      "categoria": "dialogo",
+      "en_original": "An anxious prayer to the Emperor is whispered over the vox. For a moment, the operator falls silent... and suddenly returns, mumbling excuses about his imagination playing tricks on him. His comrades are still walking ahead of him, alive and well, and the voidship looks completely empty again.",
+      "pt_atual": "Uma prece ansiosa ao Imperador é sussurrada na voz. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele , vivo e bem, e o vazio parece completamente vazio novamente.",
+      "ok": false,
+      "problema": "Tradução incorreta de \"vox\" e \"voidship\"",
+      "corrigido": "Uma prece ansiosa ao Imperador é sussurrada sobre o Vox. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele, vivo e bem, e a nave do vazio parece completamente vazia novamente."
+    },
+    {
+      "uuid": "c106b904-793b-4e5e-a0a6-b31d5e944832",
+      "categoria": "dialogo",
+      "en_original": "You have stolen nothing, but merely confiscated substances banned in the Imperium. And are now going to punish the owner of said contraband.",
+      "pt_atual": "Você não roubou nada, apenas confiscou substâncias proibidas no Império. E agora vai punir o dono do referido contrabando.",
+      "ok": true
+    },
+    {
+      "uuid": "19eb16e8-c360-4a78-a1b8-bb3de9fd9855",
+      "categoria": "dialogo",
+      "en_original": "Pirates are said to be proud people, in their own way. The response to your threats is a torpedo launch and some choice profanity over the vox-comm, from which the Vox Master decides to shield your ears.",
+      "pt_atual": "Dizem que os piratas são pessoas orgulhosas, à sua maneira. A resposta às suas ameaças é o lançamento de um torpedo e alguns palavrões escolhidos no vox-comm, do qual o Vox Master decide proteger seus ouvidos.",
+      "ok": true
+    },
+    {
+      "uuid": "ef96cb45-198f-40b5-8cd2-59e1cf01856e",
+      "categoria": "dialogo",
+      "en_original": "\"I happen to have read about burning worlds in Pandora. It is said the fires there have been raging for close to a century, though no one knows how. How long has this one been burning?\"",
+      "pt_atual": "\"Acontece que li sobre mundos em chamas em Pandora. Diz-se que os incêndios ocorrem há quase um século, embora ninguém saiba como. Há quanto tempo este está queimando?\"",
+      "ok": true
+    },
+    {
+      "uuid": "cab5e22b-b3d7-4a19-99b2-d9c27afeff4b",
+      "categoria": "dialogo",
+      "en_original": "\"Worlds with extreme environments produce the finest Astra Militarum regiments... or so I've heard. I am merely repeating what some Guards I happen to know have whispered into my credulous ears...\"",
+      "pt_atual": "\"Mundos com ambientes extremos produzem os melhores regimentos do Astra Militarum... ou pelo menos foi o que ouvi. Estou apenas repetindo o que alguns Guardas que conheço sussurraram em meus ouvidos crédulos...\"",
+      "ok": true
+    },
+    {
+      "uuid": "178d6b3f-f8fe-49cc-b8eb-04a9814174f6",
+      "categoria": "dialogo",
+      "en_original": "Headless body. Nothing definite can be said about it.",
+      "pt_atual": "Corpo sem cabeça. Nada definitivo pode ser dito sobre isso.",
+      "ok": true
+    },
+    {
+      "uuid": "f1a98371-d855-4219-9cbd-768bce2f074a",
+      "categoria": "dialogo",
+      "en_original": "\"I've asked you before, but I'll ask you again... Aeldari are supposed to be all the one species, aren't they? But I look at you, stick insect, and I don't understand why you and your kin are so creepy looking — nothing like the Aeldari on Janus. I suppose a diet of pain and torment won't do wonders for anybody's looks, but...\"",
+      "pt_atual": "\"Eu já perguntei antes, mas vou perguntar de novo... Supõe-se que os Aeldari sejam da mesma espécie, não são? Mas eu olho para você, bicho-pau, e não entendo por que você e seus parentes têm uma aparência tão assustadora - nada parecido com os Aeldari em Janus. Suponho que uma dieta de dor e tormento não fará maravilhas pela aparência de ninguém, mas...\"",
+      "ok": true
+    },
+    {
+      "uuid": "1ef74d16-2a3f-4687-8ddc-a7aa02010809",
+      "categoria": "dialogo",
+      "en_original": "\"Indeed, indeed...\" {n}Abelard frowns.{/n} \"That is easier said than done, of course. But seeing one of Lady Theodora's heirs alive inspires at least some degree of optimism.\"",
+      "pt_atual": "\"De fato, de fato...\" {n}Abelardo franze a testa.{/n} \"É mais fácil falar do que fazer, é claro. Mas ver um dos herdeiros de Senhora Theodora vivo inspira pelo menos algum grau de otimismo.\"",
+      "ok": true
+    },
+    {
+      "uuid": "125ac37d-8b1e-4489-bf7f-ff3fefdb54a2",
+      "categoria": "dialogo",
+      "en_original": "\"Praise the {g|Encyclopedia:Emperor}Emperor{/g}!\" {n}Argenta kneels next to you, and for the first time you see her eyes radiate pure, unclouded joy.{/n} \"We passed through the flames! Oh, how can this be anything but a portent? For so it is said that the Emperor will bless the worthiest and most steadfast in their faith!\"",
+      "pt_atual": "\"Louvado seja o {g|Encyclopedia:Imperador}Imperador{/g}!\" {n}Argenta se ajoelha ao seu lado e, pela primeira vez, você vê os olhos dela irradiando alegria pura e sem nuvens.{/n} \"Passamos pelas chamas! Oh, como isso pode ser outra coisa senão um presságio? Pois assim é dito que o Imperador abençoará os mais dignos e firmes em sua fé!\"",
+      "ok": true
+    },
+    {
+      "uuid": "b0826d05-85de-43a5-b414-cf2336acaf80",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the Foulstone monastery be defended from the refugees.",
+      "pt_atual": "Ordenou que o mosteiro de Foulstone fosse defendido dos refugiados.",
+      "ok": true
+    },
+    {
+      "uuid": "c8c3306d-9b3c-49d6-8e58-896c7542644a",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the Foulstone monastery open its doors to the refugees.",
+      "pt_atual": "Ordenou que o mosteiro de Foulstone abrisse suas portas aos refugiados.",
+      "ok": true
+    },
+    {
+      "uuid": "9245b243-c1c8-4817-9f84-f0c6c604ff74",
+      "categoria": "dialogo",
+      "en_original": "...ordered us to execute a jump that would mean certain death for us all.",
+      "pt_atual": "...ordenou que executássemos um salto que significaria morte certa para todos nós.",
+      "ok": true
+    },
+    {
+      "uuid": "e23032eb-3201-42e6-92a3-cda79b8616d9",
+      "categoria": "dialogo",
+      "en_original": "\"You said Yrliet would serve the Aeldari once more. Are you seeking to use her again?\"",
+      "pt_atual": "\"Você disse que Yrliet serviria os Aeldari mais uma vez. Você está tentando usá-la novamente?\"",
+      "ok": true
+    },
+    {
+      "uuid": "94232bc4-4ac9-4f8d-90f1-63450dd501d5",
+      "categoria": "dialogo",
+      "en_original": "{n}An iridescent haze momentarily clouds the world around you, and that moment is all it takes for Muaran to hide Eklendyl behind the veil of his xenosorcery.{/n} \"We will speak of my kin's fate no longer. All that was meant to be said has been said.\"",
+      "pt_atual": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Falaremos sobre o destino de meus parentes. não mais. Tudo o que era para ser dito foi dito.\"",
+      "ok": false,
+      "problema": "Tradução de \"my kin's fate\" para \"o destino de meus parentes\" em vez de \"o destino da minha linhagem\" ou similar, e também a frase \"Falaremos sobre o destino de meus parentes\" está em tom errado, pois o original é \"We will speak of my kin's fate no longer\", indicando que não se falará mais sobre o assunto.",
+      "corrigido": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Não falaremos mais sobre o destino da minha linhagem. Tudo o que era para ser dito foi dito.\""
+    },
+    {
+      "uuid": "a837ea6a-72b7-4986-a0d2-e43caca2a66d",
+      "categoria": "dialogo",
+      "en_original": "Ordered that no expense be spared and that sanctioned Astropaths be hired to restore the Astropathic Choir of Dargonus.",
+      "pt_atual": "Ordenou que nenhuma despesa fosse poupada e que Astropatas sancionados fossem contratados para restaurar o Coro Astropático de Dargonus.",
+      "ok": true
+    },
+    {
+      "uuid": "d7af8d62-b621-42bd-94c3-b2f54b5ca652",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the decommissioned servitor be bought and given to its grandfather.",
+      "pt_atual": "Ordenou que o servidor desativado fosse comprado e entregue ao seu avô.",
+      "ok": true
+    },
+    {
+      "uuid": "9f5c885c-b1d0-410a-9ec5-4e139dba4102",
+      "categoria": "dialogo",
+      "en_original": "\"I'd like to think that cleaning up the deck is better than dealing with the mess on Footfall... That said, your servants always find new ways to surprise me with their untidiness.\"",
+      "pt_atual": "\"Gostaria de pensar que limpar o convés é melhor do que lidar com a bagunça em Footfall... Dito isto, seus servos sempre encontram novas maneiras de me surpreender com sua desordem.\"",
+      "ok": true
+    },
+    {
+      "uuid": "f263dce4-9ee7-4e85-9ed1-d5a10be6d2ed",
+      "categoria": "dialogo",
+      "en_original": "\"That said, there are other options. Blasphemous, forbidden options.\" {n}The Choirmaster grimaces.{/n} \"Unsanctioned psykers. Unprotected and broken souls who seldom live past their first few seances. But even those would do, should the God-Emperor put our souls through severe trials. And judging by how rabid the warp has been of late, by the number of dead Astropaths, those trials will be upon us sooner than our prayers could reach Terra.\"",
+      "pt_atual": "\"Dito isso, há outras opções. Opções blasfemas e proibidas.\" {n}O Mestre do Coro faz uma careta.{/n} \"Psíquicos não sancionados. Almas desprotegidas e quebradas que raramente sobrevivem às suas primeiras sessões. Mas mesmo essas sobreviveriam, se o Deus-Imperador colocasse nossas almas em provações severas. E a julgar pelo quão raivosa a distorção tem sido ultimamente, pelo número de Astropatas mortos, essas provações chegarão a nós antes que nossas preces possam chegar a Terra.\"",
+      "ok": true
+    },
+    {
+      "uuid": "83a11ba0-7f78-4ae6-bdb3-5793db0301c0",
+      "categoria": "dialogo",
+      "en_original": "\"Reconsider what? I have not asked my question yet.\"",
+      "pt_atual": "\"Reconsiderar o quê? Ainda não fiz minha pergunta.\"",
+      "ok": true
+    },
+    {
+      "uuid": "d3cb4f3c-da6e-497b-8ced-e93e6c99fcfb",
+      "categoria": "dialogo",
+      "en_original": "\"Death has whispered many names, yet when it got to ours, it simply... stopped. Not here. Not now. Not today.\"",
+      "pt_atual": "\"A morte sussurrou muitos nomes, mas quando chegou ao nosso, ela simplesmente... parou. Não aqui. Não agora. Não hoje.\"",
+      "ok": true
+    },
+    {
+      "uuid": "ef9972cb-0e3a-4839-9891-6bde93c3818c",
+      "categoria": "dialogo",
+      "en_original": "{n}Einrich laughs hoarsely.{/n} \"I wouldn't believe you if you said otherwise.\"",
+      "pt_atual": "{n}Einrich ri roucamente.{/n} \"Eu não acreditaria se você dissesse o contrário.\"",
+      "ok": true
+    },
+    {
+      "uuid": "2eb16185-5955-421e-86fd-915cb00300c2",
+      "categoria": "dialogo",
+      "en_original": "\"First you consign your family to the clutches of unspeakable heresy, and now you weep for their deaths?\" {n}The Seneschal's voice rings with icy castigation.{/n} \"I see that any further dialogue with you would be pointless, Monteg.\"",
+      "pt_atual": "\"Primeiro você entregou sua família às garras de uma heresia indizível, e agora chora por suas mortes?\" {n}A voz do Senescal soa com um castigo gélido.{/n} \"Vejo que qualquer outro diálogo com você seria inútil, Monteg.\"",
+      "ok": true
+    },
+    {
+      "uuid": "d24c1917-4c23-4943-8106-f88e3f48c266",
+      "categoria": "dialogo",
+      "en_original": "{n}Abelard lets out a pained sigh.{/n} \"I suppose it is a good thing you said that to me and not to someone else. A claim like that could be interpreted as heresy.\"",
+      "pt_atual": "{n}Abelard solta um suspiro de dor.{/n} \"Suponho que seja uma coisa boa você ter dito isso para mim e não para outra pessoa. Uma alegação como essa poderia ser interpretada como heresia.\"",
+      "ok": true
+    },
+    {
+      "uuid": "383b935e-cd7c-4342-a07e-914f1c7c074c",
+      "categoria": "dialogo",
+      "en_original": "\"You said you could get rid of Marazhai for me. Is that true?\"",
+      "pt_atual": "\"Você disse que poderia se livrar de Marazhai para mim. Isso é verdade?\"",
+      "ok": true
+    },
+    {
+      "uuid": "ee703c5e-cd54-4713-8a28-df42d967b44f",
+      "categoria": "dialogo",
+      "en_original": "\"That is not what I asked. I want to know how you are doing.\"",
+      "pt_atual": "\"Não foi isso que perguntei. Quero saber como você está.\"",
+      "ok": true
+    },
+    {
+      "uuid": "8eda67ea-fe32-42a9-835d-c633b95575c3",
+      "categoria": "dialogo",
+      "en_original": "\"The Vizsier taught us that there are many like us throughout the Imperium who spill blood in His name — 'death cultists,' as they call us. He said that no two death cults are the same, just as there are no two identical stars in the void. I will tell you about the Bloodspun Web, but I cannot speak on behalf of all death cults.\"",
+      "pt_atual": "\"O Vizsier nos ensinou que há muitos como nós por todo o Império que derramam sangue em Seu nome — 'cultistas da morte', como eles nos chamam. Ele disse que não há dois cultos da morte iguais, assim como não há duas estrelas idênticas no vazio. Vou falar sobre a Bloodspun Web, mas não posso falar em nome de todos os cultos da morte.\"",
+      "ok": true
+    },
+    {
+      "uuid": "607b9eb6-99d6-42c8-8d3d-976d3fe31c0f",
+      "categoria": "dialogo",
+      "en_original": "\"I have lived according to the Tenets of the Bloodspun Web for as long as I can remember. It is what I was told to do. I knew no other way. But perhaps... this was the weakness in my soul's armour. I will think on what you've said, Domin'{name}.\"",
+      "pt_atual": "\"Eu vivi de acordo com os Princípios da Teia Sangrenta desde que me lembro. Foi o que me disseram para fazer. Eu não conhecia outro jeito. Mas talvez... essa fosse a fraqueza na armadura da minha alma. Vou pensar no que você disse, Domin'{name}.\"",
+      "ok": true
+    },
+    {
+      "uuid": "3864d189-b960-4bc4-88e5-19ae5a32b22d",
+      "categoria": "dialogo",
+      "en_original": "\"Long has death whispered of Vil'Marazhai's demise. His life is in your hands, his death is in mine. Give the order, and the thread of his life will be cut short before the next watch.\"",
+      "pt_atual": "\"Há muito tempo a morte sussurrou sobre o fim de Vil'Marazhai. A vida dele está em suas mãos, a morte dele está nas minhas. Dê a ordem, e o fio da vida dele será cortado antes da próxima vigília.\"",
+      "ok": true
+    },
+    {
+      "uuid": "95ff55b7-8b62-4a92-9592-c1ee3428202c",
+      "categoria": "dialogo",
+      "en_original": "\"None wander in here. We were free to offer our prayers without fear of discovery. And the sight of dead heretics... was pleasing! Trampling your bones was a righteous act! That is why I ordered the pure to sunder the walls of your bone vault and make this place a sanctuary for the Congregation!\" {n}He sneers.{/n}",
+      "pt_atual": "\"Ninguém entra aqui. Éramos livres para oferecer nossas orações sem medo de sermos descobertos. E a visão de hereges mortos... era agradável! Pisar em seus ossos era um ato justo! É por isso que ordenei aos puros que rompessem as paredes de seu cofre de ossos e fizessem deste lugar um santuário para a Congregação!\" {n}Ele zomba.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "de033790-1ba9-43f9-ab9b-4daeea32a562",
+      "categoria": "dialogo",
+      "en_original": "\"A spinner of the Bloodspun Web came to the service today! I thought they were there to kill someone, but they just said a quiet prayer and left. I'm still shivering.\"",
+      "pt_atual": "\"Um spinner da Bloodspun Web veio ao culto hoje! Pensei que eles estavam lá para matar alguém, mas eles apenas fizeram uma prece silenciosa e foram embora. Ainda estou tremendo.\"",
+      "ok": true
+    },
+    {
+      "uuid": "7512ce5f-8ed8-419d-951e-5578da9ee867",
+      "categoria": "dialogo",
+      "en_original": "{n}Everything about these people unsettles you. Their manner of speech and the sinister grace with which they handle their blades is enough to make your blood run cold. You cannot help but feel a growing unease as you witness their tattered, blood-stained clothes, hear their whispered chants, and feel the weight of their cold, impassive stares. They do not look like any servants of the Emperor you have ever met. However, your officers treat them with cautious reverence, and speak about their prowess in whispers of admiration.{/n}",
+      "pt_atual": "{n}Tudo sobre essas pessoas te perturba. A maneira de falar e a graça sinistra com que manuseiam suas lâminas é o suficiente para fazer seu sangue gelar. Você não pode deixar de sentir um desconforto crescente ao testemunhar suas roupas esfarrapadas e manchadas de sangue, ouvir seus cânticos sussurrados e sentir o peso de seus olhares frios e impassíveis. Eles não se parecem com nenhum servo do Imperador que você já conheceu. No entanto, seus oficiais os tratam com reverência cautelosa e falam sobre suas proezas em sussurros de admiração.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "d73dc918-e1c3-4b27-89d2-2fb714a25ffa",
+      "categoria": "dialogo",
+      "en_original": "\"Domin'{name} von Valancius, death has whispered your name.\" {n}The woman's slender finger has been fitted with a metal claw. She points it in your direction, and gazes at you from behind her bone mask with the cold, grim eyes of an assassin.{/n} \"We disown Domin'Theodora. We renounce our oath to her.\" {n}She pulls out a sinister curved blade, and similar weapons suddenly appear in the hands of her motionless companions.{/n}",
+      "pt_atual": "\"Domin'{name} von Valancius, a morte sussurrou seu nome.\" {n}O dedo fino da mulher foi equipado com uma garra de metal. Ela aponta em sua direção e olha para você por trás de sua máscara de osso com os olhos frios e sombrios de uma assassina.{/n} \"Nós renegamos Domin'Theodora. Renunciamos ao nosso juramento a ela.\" {n}Ela puxa uma lâmina curva sinistra, e armas semelhantes aparecem de repente nas mãos de seus companheiros imóveis.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "b3fbc303-e6ed-426c-ae3c-48a23988b933",
+      "categoria": "dialogo",
+      "en_original": "\"And now we give the gift of our blood to you. It is the gift of death.\" {n}Their blades sing through the air, and rivulets of crimson flow onto the deck. The young woman bows her head reverently as she hands you a heavy parcel. The others bow their heads as well. They seem unconcerned by the blood that trickles down their fingers.{/n} \"Death has whispered your name. The followers of the Tenets of the Web swear fealty to their new overlord and offer proof of their devotion.\"",
+      "pt_atual": "\"E agora damos o presente do nosso sangue a você. É o presente da morte.\" {n}Suas lâminas cantam pelo ar, e riachos de carmesim fluem para o convés. A jovem mulher abaixa a cabeça reverentemente enquanto lhe entrega um pacote pesado. Os outros abaixam a cabeça também. Eles parecem despreocupados com o sangue que escorre por seus dedos.{/n} \"A morte sussurrou seu nome. Os seguidores dos Princípios da Teia juram fidelidade ao seu novo senhor e oferecem provas de sua devoção.\"",
+      "ok": true
+    },
+    {
+      "uuid": "9560e585-8132-43e5-b743-230ea276528e",
+      "categoria": "dialogo",
+      "en_original": "\"Death has whispered your name, Domin'{name} von Valancius. You may refuse the gift, but it will remain yours forever. For so {g|Encyclopedia:ImperialTarotGlossary}His Tarot{/g} forespoke, and so it was ordained. Perhaps the time has not yet come, and you may well change your decision.\"",
+      "pt_atual": "\"A morte sussurrou seu nome, Domin'{name} von Valancius. Você pode recusar o presente, mas ele permanecerá seu para sempre. Pois assim {g|Encyclopedia:ImperialTarotGlossary}Seu Tarot{/g} previu, e assim foi ordenado. Talvez a hora ainda não tenha chegado, e você pode muito bem mudar sua decisão.\"",
+      "ok": true
+    },
+    {
+      "uuid": "89f59912-00f4-48d1-95ec-43ec71689e1b",
+      "categoria": "dialogo",
+      "en_original": "\"Domin'{name}. The Undying One has whispered that you would honour the temple of death with a visit. We are ready to serve you.\"",
+      "pt_atual": "\"Domin'{name}. O Imortal sussurrou que você honraria o templo da morte com uma visita. Estamos prontos para servi-lo.\"",
+      "ok": true
+    },
+    {
+      "uuid": "43a76eaf-7210-4011-b033-73b5c1945af2",
+      "categoria": "dialogo",
+      "en_original": "\"Have you stopped killing people, as I ordered?\"",
+      "pt_atual": "\"Vocês pararam de matar pessoas, como eu ordenei?\"",
+      "ok": true
+    },
+    {
+      "uuid": "e222be64-c097-4aa6-bf7a-3ee3808a9f61",
+      "categoria": "dialogo",
+      "en_original": "\"This is also the desire of the Undying One. He has not whispered the name of young Giorek, so we may heal him.\"",
+      "pt_atual": "\"Este também é o desejo do Imortal. Ele não sussurrou o nome do jovem Giorek, então podemos curá-lo.\"",
+      "ok": true
+    },
+    {
+      "uuid": "c6c84dd7-1552-40e6-97fd-dfc496d728dd",
+      "categoria": "dialogo",
+      "en_original": "Whispered words of corruption during a sacred death cultist ceremony.",
+      "pt_atual": "Palavras sussurradas de corrupção durante uma cerimônia sagrada de um cultista da morte.",
+      "ok": true
+    },
+    {
+      "uuid": "20a8995d-deed-4f6a-b93d-b17f1eff4cf9",
+      "categoria": "dialogo",
+      "en_original": "\"A good person took care of me and helped me to stand again. They didn't take anything in return either. They just asked me to show that same kindness to somebody else.\"",
+      "pt_atual": "\"Uma boa pessoa cuidou de mim e me ajudou a ficar de pé novamente. Eles também não levaram nada em troca. Eles só me pediram para mostrar a mesma gentileza para outra pessoa.\"",
+      "ok": true
+    },
+    {
+      "uuid": "e83a01e6-e267-43ff-a723-ce7781d65171",
+      "categoria": "dialogo",
+      "en_original": "\"The spinner whispered a verse to you? Can you repeat it for me?\"",
+      "pt_atual": "\"A fiandeira sussurrou um verso para você? Você pode repeti-lo para mim?\"",
+      "ok": true
+    },
+    {
+      "uuid": "57613faf-063e-467d-a542-c095fc391888",
+      "categoria": "dialogo",
+      "en_original": "{n}The rotating blades promise nothing but a senseless and brutal death. Slipping past them would require some unreasonably precise calculations... or blind luck. While listening to the air currents, for a moment you think you hear Zdena's whispered prayer rising from the depths of the shaft.{/n}",
+      "pt_atual": "{n}As lâminas giratórias não prometem nada além de uma morte brutal e sem sentido. Passar por elas exigiria alguns cálculos irracionalmente precisos... ou sorte cega. Enquanto ouve as correntes de ar, por um momento você acha que ouve a prece sussurrada de Zdena subindo das profundezas do poço.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "c7c1a218-6698-4653-88bc-e18de8d44c87",
+      "categoria": "dialogo",
+      "en_original": "\"You were ordered to die? For what reason?\"",
+      "pt_atual": "\"Você foi condenado a morrer? Por qual motivo?\"",
+      "ok": true
+    },
+    {
+      "uuid": "8596a2d5-8cf1-45fc-979d-0c4b5db7b656",
+      "categoria": "dialogo",
+      "en_original": "\"There was no pursuit. I thought I'd see their black blades the very next day. Instead, years passed without them taking my heart. I tried starting a new life, but the terror never stopped eating away at me. When I got truly desperate, I went to the temple of death myself. But no one there would speak to me. When I gave them my name, they just whispered, 'Sebreid has gone to the Undying One.' They looked through me like I wasn't even there. I've lived like this for twenty years. Like a coward. Like a dead man.\"",
+      "pt_atual": "\"Não houve perseguição. Pensei que veria suas lâminas negras no dia seguinte. Em vez disso, anos se passaram sem que eles tomassem meu coração. Tentei começar uma nova vida, mas o terror nunca parou de me corroer. Quando fiquei realmente desesperado, fui até o templo da morte. Mas ninguém lá falava comigo. Quando dei meu nome, eles apenas sussurraram: 'Sebreid foi para o Imortal'. Eles olharam através de mim como se eu nem estivesse lá. Vivi assim por vinte anos. Como um covarde. Como um homem morto.\"",
+      "ok": true
+    },
+    {
+      "uuid": "4650dec1-0b5c-403b-88d3-e042488b81ba",
+      "categoria": "dialogo",
+      "en_original": "\"I arrived just in time to execute the traitor Frensoe and reclaim control. I ordered the squad to return to the post and take up a defensive position, but it was already overrun by mutants entering through the elevator shaft. They lured us out and then seized our fortifications.\"",
+      "pt_atual": "\"Cheguei bem a tempo de executar o traidor Frensoe e retomar o controle. Ordenei que o esquadrão retornasse ao posto e assumisse uma posição defensiva, mas ele já estava invadido por mutantes entrando pelo poço do elevador. Eles nos atraíram para fora e então tomaram nossas fortificações.\"",
+      "ok": true
+    },
+    {
+      "uuid": "c017fe1d-6842-4837-8945-d7b98bafffe7",
+      "categoria": "dialogo",
+      "en_original": "\"You are being hunted, Domin'{name}, driven like prey toward the hunter. He is the hunter.\" {n}The skinny young man, who ceased to be a boy only yesterday, carries himself with detachment and surprising dignity.{/n} \"The Vizsier said that he must die and that you must live.\"",
+      "pt_atual": "\"Você está sendo caçado, Domin'{name}, levado como uma presa em direção ao caçador. Ele é o caçador.\" {n}O jovem magro, que deixou de ser um menino ontem, se comporta com desapego e surpreendente dignidade.{/n} \"O Vizsier disse que ele deve morrer e que você deve viver.\"",
+      "ok": true
+    },
+    {
+      "uuid": "368fe25e-931f-4e30-95b7-c0bdd2749b31",
+      "categoria": "dialogo",
+      "en_original": "\"They said that we no longer need to endure beatings, fight over crumbs of food, or die after you have worked us to the bone! That people can live as equals, take care of one another, and have dignity. This is what they are fighting for. You profit from keeping us in poverty, and your faith is false! Why would the Emperor want His believers to suffer in vain?\"",
+      "pt_atual": "\"Eles disseram que não precisamos mais suportar surras, lutar por migalhas de comida ou morrer depois que você nos fez trabalhar até os ossos! Que as pessoas podem viver como iguais, cuidar umas das outras e ter dignidade. É por isso que eles estão lutando. Você lucra nos mantendo na pobreza, e sua fé é falsa! Por que o Imperador iria querer que Seus fiéis sofressem em vão?\"",
+      "ok": true
+    },
+    {
+      "uuid": "79163e18-1b60-4964-901a-f5c307be87a1",
+      "categoria": "dialogo",
+      "en_original": "\"If I'd been beaten like him, I would have said all this and more. The Emperor does protect me...\"",
+      "pt_atual": "\"Se eu tivesse sido espancado como ele, eu teria dito tudo isso e muito mais. O Imperador me protege...\"",
+      "ok": true
+    },
+    {
+      "uuid": "ddad64d9-a03a-4d68-b3f8-9ba9eadc19ec",
+      "categoria": "dialogo",
+      "en_original": "\"I did as the servant of death commanded. She said the Emperor gave the First Spinner a sign: that Your {mf|Lordship|Ladyship} should be bathed in the blood of poor Orto, my partner. And I, well...\" {n}He gulps.{/n} \"I was scared. So, I obeyed.\"",
+      "pt_atual": "\"Fiz como a serva da morte ordenou. Ela disse que o Imperador deu um sinal à Primeira Tecelã: que Vossa Senhoria deveria se banhar no sangue do pobre Orto, meu parceiro. E eu, bem...\" {n}Ele engole em seco.{/n} \"Fiquei assustado. Então, obedeci.\"",
+      "ok": true
+    },
+    {
+      "uuid": "8eb5390b-99b6-4315-89f6-0f1987ea76bc",
+      "categoria": "dialogo",
+      "en_original": "\"We found witnesses to the battery of our false conspirator. According to them, an enforcer in a helmet came to the detained Yart, spoke to him, and then gave him a beating so thorough that a ring came off their finger. Alas, said ring could not be recovered.\"",
+      "pt_atual": "\"Encontramos testemunhas da agressão do nosso falso conspirador. Segundo elas, um executor de capacete foi até o detido Yart, falou com ele e então lhe deu uma surra tão forte que um anel caiu do dedo. Infelizmente, disse o anel não pôde ser recuperado.\"",
+      "ok": true
+    },
+    {
+      "uuid": "64b70854-f9ad-4560-99da-266a362099e5",
+      "categoria": "dialogo",
+      "en_original": "{n}Gwedon hangs his head.{/n} \"My mum always said I'd die an idiot...\"",
+      "pt_atual": "{n}Gwedon abaixa a cabeça.{/n} \"Minha mãe sempre disse que eu morreria idiota...\"",
+      "ok": true
+    },
+    {
+      "uuid": "0a07a79c-8653-4c60-885e-70d0b6574e2f",
+      "categoria": "dialogo",
+      "en_original": "\"If the Vizsier ordered it, there must have been a reason. The Undying One must have revealed something to him that we are ignorant of.\"",
+      "pt_atual": "\"Se o Vizsier ordenou, deve ter havido uma razão. O Imortal deve ter revelado algo a ele que desconhecemos.\"",
+      "ok": true
+    },
+    {
+      "uuid": "a03f786b-e5a0-4d89-ae8d-30efad61838a",
+      "categoria": "dialogo",
+      "en_original": "\"One of the inferni said he had his pass to the maintenance room taken away by an enforcer.\"",
+      "pt_atual": "\"Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um segurança.\"",
+      "ok": false,
+      "problema": "Termo \"enforcer\" traduzido como \"segurança\" em vez de manter o termo original ou uma tradução mais apropriada para o contexto de Warhammer 40,000.",
+      "corrigido": "Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um executor."
+    },
+    {
+      "uuid": "e3e5018a-3831-42fa-9f38-ceb629ef46a2",
+      "categoria": "dialogo",
+      "en_original": "\"In the name of upholding the blessed axiomatics, I am initiating the accompanying tech-service.\" {n}Pasqal's mechadendrites writhe like snakes in a sacred dance. One of them reverentially docks with the cogitator's dataport.{/n} \"O calculating machine spirit, blessed in omniscience, luminous in the darkness of ignorance! May the regalia be revealed, may the prayers of access be said, may these restrictive circuits be removed.\" {n}The cogitator lets out a serene sigh of dust from its ventilation grate.{/n}",
+      "pt_atual": "\"Em nome da defesa da axiomática abençoada, estou iniciando o serviço técnico que a acompanha.\" {n}Os mechadendritos de Pasqal se contorcem como cobras em uma dança sagrada. Um deles atraca reverentemente com a porta de dados do cogitador.{/n} \"Ó espírito da máquina de calcular, abençoado em onisciência, luminoso na escuridão da ignorância! Que as insígnias sejam reveladas, que as orações de acesso sejam ditas, que esses circuitos restritivos sejam removidos.\" {n}O cogitador solta um suspiro sereno de poeira de sua grade de ventilação.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "08475950-309d-4531-b96e-6e7e1f87c7e6",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the fake cultist be spared.",
+      "pt_atual": "Ordenou que o falso cultista fosse poupado.",
+      "ok": true
+    },
+    {
+      "uuid": "06143500-f6b9-44eb-b48b-383c9c7c4466",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the fake cultist be executed.",
+      "pt_atual": "Ordenou que o falso cultista fosse executado.",
+      "ok": true
+    },
+    {
+      "uuid": "27f6da36-c6af-498d-89e9-74e0974f22b7",
+      "categoria": "dialogo",
+      "en_original": "Ordered that the fake cultist be burned along with his family.",
+      "pt_atual": "Ordenou que o falso cultista fosse queimado junto com sua família.",
+      "ok": true
+    },
+    {
+      "uuid": "346cb5b2-d8c8-429c-94d5-8f4dbef3712c",
+      "categoria": "dialogo",
+      "en_original": "\"I ordered that the beatings be stopped!\"",
+      "pt_atual": "\"Eu ordenei que os espancamentos parassem!\"",
+      "ok": true
+    },
+    {
+      "uuid": "35914e08-c62c-45e3-8eb3-2a30cc0ca715",
+      "categoria": "dialogo",
+      "en_original": "Took pity on the arrested inferni and ordered that the beatings be stopped.",
+      "pt_atual": "Teve pena dos infernais presos e ordenou que os espancamentos parassem.",
+      "ok": true
+    },
+    {
+      "uuid": "b281a143-4d72-4a2a-9b94-a4a6fc49edbb",
+      "categoria": "dialogo",
+      "en_original": "\"Statements... There was one infernus goon, a real dimwit. He said that some enforcer took away his work pass. And the pass was an important one that grants access to the work log {g|Encyclopedia:Cogitator}cogitator{/g} room. But the scum was lying — he couldn't give the name and rank of the enforcer. All he said was: 'Some guy, blond hair, tallish...' He knows that he will be flogged to death for such a misdemeanour, the rat, so he tried to shift the blame.\"",
+      "pt_atual": "\"Declarações... Havia um capanga infernus, um verdadeiro idiota. Ele disse que algum executor tirou seu passe de trabalho. E o passe era importante, que dá acesso à sala de registro de trabalho {g|Encyclopedia:Cogitator}cogitador{/g}. Mas o canalha estava mentindo — ele não conseguiu dar o nome e a patente do executor. Tudo o que ele disse foi: 'Um cara, cabelo loiro, alto...' Ele sabe que será açoitado até a morte por tal delito, o rato, então ele tentou transferir a culpa.\"",
+      "ok": true
+    },
+    {
+      "uuid": "a263406b-aad1-4983-a252-1199041e3248",
+      "categoria": "dialogo",
+      "en_original": "\"Why has he been beaten? I ordered that the beatings be stopped!\"",
+      "pt_atual": "\"Por que ele foi espancado? Eu ordenei que as surras parassem!\"",
+      "ok": true
+    },
+    {
+      "uuid": "6113db7b-5812-4bea-a74b-9ae36c4f628b",
+      "categoria": "dialogo",
+      "en_original": "\"Allow me to demonstrate. You there, cultist. You said you rubbed elbows with daemons? Name one for me.\"",
+      "pt_atual": "\"Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com demônios? Diga um para mim.\"",
+      "ok": false,
+      "problema": "Termo \"daemons\" não foi traduzido corretamente, pois \"Daemon\" é um termo que não deve ser traduzido de acordo com as regras.",
+      "corrigido": "Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com Daemons? Diga um para mim."
+    },
+    {
+      "uuid": "f3cf55e1-6e21-4ada-ba3d-53c191176830",
+      "categoria": "dialogo",
+      "en_original": "Ordered the Chirurgeon Majoris to find volunteers willing to be infected so that he might find the cure for the disease.",
+      "pt_atual": "Ordenou ao cirurgião Majoris que encontrasse voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença.",
+      "ok": false,
+      "problema": "Termo \"Chirurgeon\" não foi traduzido corretamente, pois não está na lista de termos que não se traduzem, e \"cirurgião\" não é o termo mais apropriado no contexto do jogo Warhammer 40,000.",
+      "corrigido": "Ordenou ao Chirurgeon Majoris a encontrar voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença."
+    },
+    {
+      "uuid": "02e68501-6e89-4589-b550-0a2445c127b0",
+      "categoria": "dialogo",
+      "en_original": "Ordered the Chirurgeon Majoris to use convicts as test subjects so that he might find the cure for the disease.",
+      "pt_atual": "Ordenou ao cirurgião Majoris que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença.",
+      "ok": false,
+      "problema": "Termo \"Chirurgeon\" não foi traduzido corretamente, deveria ser um termo mais formal e técnico.",
+      "corrigido": "Ordenou ao cirurgião-chefe que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença."
+    },
+    {
+      "uuid": "0d82f26e-72b8-4579-b028-5f9a54c77652",
+      "categoria": "dialogo",
+      "en_original": "\"The confessor said every compartment has people who fight for our cause. They promised to take me into the circle of our most devoted believers. Then I would know... But even then, I would tell you nothing, not even under torture!\"",
+      "pt_atual": "\"O confessor disse que cada compartimento tem pessoas que lutam pela nossa causa. Eles prometeram me levar para o círculo dos nossos fiéis mais devotados. Então eu saberia... Mas mesmo assim, eu não lhe contaria nada, nem mesmo sob tortura!\"",
+      "ok": true
+    },
+    {
+      "uuid": "0deba675-5b40-4573-88eb-420f77eefd60",
+      "categoria": "dialogo",
+      "en_original": "\"I discovered a warp-active mineral on Thassera and ordered it be studied. If this resource proves sufficiently useful to the Imperium, you must include it in the tithe.\"",
+      "pt_atual": "\"Descobri um mineral com atividade de dobra em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo.\"",
+      "ok": false,
+      "problema": "Termo \"dobra\" não é a tradução correta para \"warp\"",
+      "corrigido": "Descobri um mineral com atividade de Warp em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo."
+    },
+    {
+      "uuid": "eced0b79-94df-41a5-9fed-7fe7d28ea6c9",
+      "categoria": "dialogo",
+      "en_original": "\"I discovered a unique material, a natural psy-focus called thassertium. I ordered it be included in Thassera's planetary tithe.\"",
+      "pt_atual": "\"Descobri um material único, um foco psíquico natural chamado thassertium. Ordenei que fosse incluído no dízimo planetário de Thassera.\"",
+      "ok": true
+    },
+    {
+      "uuid": "4d1b41d7-1447-448a-90e8-73451b12f238",
+      "categoria": "dialogo",
+      "en_original": "\"You still shouldn't have said anything. I can take care of myself.\"",
+      "pt_atual": "\"Você ainda não deveria ter dito nada. Eu sei cuidar de mim mesma.\"",
+      "ok": true
+    },
+    {
+      "uuid": "1a4fa69e-f0e2-409a-9f8e-b68429a79b91",
+      "categoria": "dialogo",
+      "en_original": "\"I am afraid I cannot accept another person's report.\" {n}Her shrivelled fingers nimbly extract a piece of parchment from her stack of papers. It is covered in minuscule writing.{/n} \"According to Koronus Expanse Statute 19/A-11, any decision pertaining to matters of the tithe shall solely be answered for by the person that directly made said decision. A report made by any other person shall be deemed legally null and void.\" {n}The prefect puts the document back in its place.{/n} \"As you can see, there is a sacred stipulation that you submit your report in person and that I accept it from no one else.\"",
+      "pt_atual": "\"Receio não poder aceitar o relatório de outra pessoa.\" {n}Seus dedos enrugados retiram agilmente um pedaço de pergaminho da pilha de papéis. Está coberto com uma letra minúscula.{/n} \"De acordo com o Estatuto 19/A-11 da Extensão Koronus, qualquer decisão relacionada a questões do dízimo será respondida exclusivamente pela pessoa que a tomou diretamente. Um relatório feito por qualquer outra pessoa será considerado legalmente nulo e inválido.\" {n}O prefeito recoloca o documento em seu lugar.{/n} \"Como pode ver, há uma estipulação sagrada de que você apresente seu relatório pessoalmente e que eu o aceite de ninguém mais.\"",
+      "ok": true
+    },
+    {
+      "uuid": "133d253a-acb7-4ba4-8ed3-c6a1ce2f642f",
+      "categoria": "dialogo",
+      "en_original": "{n}The Marshal turns again to look at you.{/n} \"There is another reason. Under the present circumstances, only you can provide the necessary level of security for the Imperium's property stored on your world. The Arbites are too few, and our forces are stretched too thin, as we must see to the stability of tithe deliveries from other worlds — and prevent any attempts to disrupt said stability. Thus, we are humbly asking you to help us.\"",
+      "pt_atual": "{n}O Marechal se vira novamente para encará-lo.{/n} \"Há outro motivo. Nas circunstâncias atuais, só você pode fornecer o nível necessário de segurança para os bens do Império armazenados em seu mundo. Os Arbites são poucos e nossas forças estão sobrecarregadas, pois precisamos garantir a estabilidade das entregas de dízimos de outros mundos — e impedir qualquer tentativa de perturbar essa estabilidade. Portanto, pedimos humildemente que nos ajude.\"",
+      "ok": true
+    },
+    {
+      "uuid": "88a4360d-3112-4240-96c6-e35487c65347",
+      "categoria": "dialogo",
+      "en_original": "\"You have said quite enough. Now what?\"",
+      "pt_atual": "\"Você já disse o suficiente. E agora?\"",
+      "ok": true
+    },
+    {
+      "uuid": "d3d60880-6859-420d-bcd5-b35eb1be877b",
+      "categoria": "dialogo",
+      "en_original": "\"Yes. It was all arranged — I left the data-slate out in the open and ordered Glaito to guard it. The plan was for you to find it and for my 'clumsy courtship' to take me back to your bed.\" {n}Solomorne looks at you with a ruthless smirk.{/n}",
+      "pt_atual": "\"Sim. Estava tudo combinado — deixei a placa de dados exposta e ordenei que Glaito a guardasse. O plano era que você a encontrasse e que meu 'namoro desajeitado' me levasse de volta para a sua cama.\" {n}Solomorne olha para você com um sorriso implacável.{/n}",
+      "ok": true
+    },
+    {
+      "uuid": "300ecc1d-1662-455a-9c9f-469db662201b",
+      "categoria": "dialogo",
+      "en_original": "{n}An aggressive grimace appears on Solomorne's face.{/n} \"And besides, you wouldn't want to drag me out of here if you knew the truth. Everything between us was a lie. I was ordered to lie to you, so I did. The truth is I couldn't care less about you.\"",
+      "pt_atual": "{n}Uma careta agressiva surge no rosto de Solomorne.{/n} \"E, além disso, você não iria querer me arrastar para fora daqui se soubesse a verdade. Tudo entre nós era uma mentira. Recebi ordens para mentir para você, então menti. A verdade é que eu não dou a mínima para você.\"",
+      "ok": true
+    },
+    {
+      "uuid": "37054fa2-3f2c-4459-a9dd-045101705583",
+      "categoria": "dialogo",
+      "en_original": "\"What if I ordered you to continue our affair?\"",
+      "pt_atual": "\"E se eu ordenasse que você continuasse nosso caso?\"",
+      "ok": true
+    },
+    {
+      "uuid": "50e3e3d4-f2e7-4582-a2f0-8140de19162e",
+      "categoria": "dialogo",
+      "en_original": "\"If you regret what you said, you can simply take it back.\"",
+      "pt_atual": "\"Se você se arrepende do que disse, pode simplesmente retirar o que disse.\"",
+      "ok": true
+    },
+    {
+      "uuid": "ca8bd4c9-1985-4ee8-8781-e17023f47389",
+      "categoria": "dialogo",
+      "en_original": "\"When we were on Thassera, I shouldn't have been so standoffish. I should have asked you to dance. I am trying to make up for it now.\"",
+      "pt_atual": "\"Quando estávamos em Thassera, eu não deveria ter sido tão reservado. Eu deveria ter te convidado para dançar. Estou tentando compensar isso agora.\"",
+      "ok": true
+    },
+    {
+      "uuid": "2da0213d-3952-4e2c-993a-557e00075f13",
+      "categoria": "dialogo",
+      "en_original": "\"You once asked me about my reading tastes, and I promised to lend you my books. I would welcome a discussion on legislative amendments in the last two centuries — by far the most interesting period, in my opinion.\"",
+      "pt_atual": "\"Uma vez você me perguntou sobre meus gostos literários, e eu prometi te emprestar meus livros. Eu adoraria uma discussão sobre as emendas legislativas dos últimos dois séculos — de longe o período mais interessante, na minha opinião.\"",
+      "ok": true
+    }
+  ]
+}

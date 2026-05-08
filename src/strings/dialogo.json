@@ -146,8 +146,8 @@
   },
   "3c46c050-a521-48b4-9b1b-c1101b549d48": {
     "en": "{n}Ryzza gives you a calculating look and says tentatively,{/n} \"I take it we're talking about something more substantial than a shipment of lasguns or a hold packed with obscura? I can't offer you anything at the moment, but I'll remember that you asked. I'll let my associates know.\"",
-    "pt": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de armas laser ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\"",
-    "status": "machine"
+    "pt": "{n}Ryzza lança um olhar calculista e diz hesitantemente:{/n} \"Acho que estamos falando de algo mais substancial do que um carregamento de Lasgun ou um porão cheio de obscura? Não posso lhe oferecer nada no momento, mas lembrarei que você pediu. Avisarei meus associados.\"",
+    "status": "approved"
   },
   "785af4d1-7327-42b7-bbe8-244ac2229fe4": {
     "en": "Logistics officers lead by Master Helmsman Ravor are ordered to plot a course for the rescue shuttle from the dynasty's flagship to the xenoship and back.",
@@ -161,8 +161,8 @@
   },
   "823b625a-03d3-4216-ab35-a1fd910485b3": {
     "en": "An anxious prayer to the Emperor is whispered over the vox. For a moment, the operator falls silent... and suddenly returns, mumbling excuses about his imagination playing tricks on him. His comrades are still walking ahead of him, alive and well, and the voidship looks completely empty again.",
-    "pt": "Uma prece ansiosa ao Imperador é sussurrada na voz. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele , vivo e bem, e o vazio parece completamente vazio novamente.",
-    "status": "machine"
+    "pt": "Uma prece ansiosa ao Imperador é sussurrada sobre o Vox. Por um momento, o operador fica em silêncio... e de repente retorna, murmurando desculpas sobre sua imaginação pregando peças nele. Seus camaradas ainda estão andando à frente dele, vivo e bem, e a nave do vazio parece completamente vazia novamente.",
+    "status": "approved"
   },
   "c106b904-793b-4e5e-a0a6-b31d5e944832": {
     "en": "You have stolen nothing, but merely confiscated substances banned in the Imperium. And are now going to punish the owner of said contraband.",
@@ -231,8 +231,8 @@
   },
   "94232bc4-4ac9-4f8d-90f1-63450dd501d5": {
     "en": "{n}An iridescent haze momentarily clouds the world around you, and that moment is all it takes for Muaran to hide Eklendyl behind the veil of his xenosorcery.{/n} \"We will speak of my kin's fate no longer. All that was meant to be said has been said.\"",
-    "pt": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Falaremos sobre o destino de meus parentes. não mais. Tudo o que era para ser dito foi dito.\"",
-    "status": "machine"
+    "pt": "{n}Uma névoa iridescente obscurece momentaneamente o mundo ao seu redor, e esse momento é o suficiente para Muaran esconder Eklendyl atrás do véu de sua xenosorceria.{/n} \"Não falaremos mais sobre o destino da minha linhagem. Tudo o que era para ser dito foi dito.\"",
+    "status": "approved"
   },
   "a837ea6a-72b7-4986-a0d2-e43caca2a66d": {
     "en": "Ordered that no expense be spared and that sanctioned Astropaths be hired to restore the Astropathic Choir of Dargonus.",
@@ -426,8 +426,8 @@
   },
   "a03f786b-e5a0-4d89-ae8d-30efad61838a": {
     "en": "\"One of the inferni said he had his pass to the maintenance room taken away by an enforcer.\"",
-    "pt": "\"Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um segurança.\"",
-    "status": "machine"
+    "pt": "Um dos infernais disse que seu passe para a sala de manutenção foi roubado por um executor.",
+    "status": "approved"
   },
   "e3e5018a-3831-42fa-9f38-ceb629ef46a2": {
     "en": "\"In the name of upholding the blessed axiomatics, I am initiating the accompanying tech-service.\" {n}Pasqal's mechadendrites writhe like snakes in a sacred dance. One of them reverentially docks with the cogitator's dataport.{/n} \"O calculating machine spirit, blessed in omniscience, luminous in the darkness of ignorance! May the regalia be revealed, may the prayers of access be said, may these restrictive circuits be removed.\" {n}The cogitator lets out a serene sigh of dust from its ventilation grate.{/n}",
@@ -471,18 +471,18 @@
   },
   "6113db7b-5812-4bea-a74b-9ae36c4f628b": {
     "en": "\"Allow me to demonstrate. You there, cultist. You said you rubbed elbows with daemons? Name one for me.\"",
-    "pt": "\"Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com demônios? Diga um para mim.\"",
-    "status": "machine"
+    "pt": "Deixe-me demonstrar. Você aí, cultista. Você disse que se acotovelou com Daemons? Diga um para mim.",
+    "status": "approved"
   },
   "f3cf55e1-6e21-4ada-ba3d-53c191176830": {
     "en": "Ordered the Chirurgeon Majoris to find volunteers willing to be infected so that he might find the cure for the disease.",
-    "pt": "Ordenou ao cirurgião Majoris que encontrasse voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença.",
-    "status": "machine"
+    "pt": "Ordenou ao Chirurgeon Majoris a encontrar voluntários dispostos a serem infectados para que ele pudesse encontrar a cura para a doença.",
+    "status": "approved"
   },
   "02e68501-6e89-4589-b550-0a2445c127b0": {
     "en": "Ordered the Chirurgeon Majoris to use convicts as test subjects so that he might find the cure for the disease.",
-    "pt": "Ordenou ao cirurgião Majoris que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença.",
-    "status": "machine"
+    "pt": "Ordenou ao cirurgião-chefe que usasse condenados como cobaias para que ele pudesse encontrar a cura para a doença.",
+    "status": "approved"
   },
   "0d82f26e-72b8-4579-b028-5f9a54c77652": {
     "en": "\"The confessor said every compartment has people who fight for our cause. They promised to take me into the circle of our most devoted believers. Then I would know... But even then, I would tell you nothing, not even under torture!\"",
@@ -491,8 +491,8 @@
   },
   "0deba675-5b40-4573-88eb-420f77eefd60": {
     "en": "\"I discovered a warp-active mineral on Thassera and ordered it be studied. If this resource proves sufficiently useful to the Imperium, you must include it in the tithe.\"",
-    "pt": "\"Descobri um mineral com atividade de dobra em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo.\"",
-    "status": "machine"
+    "pt": "Descobri um mineral com atividade de Warp em Thassera e ordenei que fosse estudado. Se este recurso se mostrar suficientemente útil para o Império, você deve incluí-lo no dízimo.",
+    "status": "approved"
   },
   "eced0b79-94df-41a5-9fed-7fe7d28ea6c9": {
     "en": "\"I discovered a unique material, a natural psy-focus called thassertium. I ordered it be included in Thassera's planetary tithe.\"",
